@@ -9,6 +9,7 @@
 
 * [Deployment](#deployment)
 * [Description](#description)
+* [ElevatorPitch](#elevatorPitch)
 * [Installation](#installation)
 * [Wireframe](#wireframe)
 * [Technology](#Technology)
@@ -36,6 +37,50 @@
 <br>
 <br>
 
+## [ElevatorPitch](#table-of-contents)
+----
+Instant message applicaiton that allow you to easily stay connected with freinds and family while on the go or at home. Babbel-Exchange is interactive and responsive single page applicaiton (SPA) that utilizes MongoDB, Express, React, and NodeJS (MERN Stack).
+<br>
+<br>
+
+## [Wireframe](#table-of-contents)
+
+ ----
+
+<p align="center">
+  <img src="./client/public/WireFrame_Login.png" width="850" alt="Login Screen Wireframe")
+</p>
+<h5 align="center">Login Screen</h5>
+<br>
+<br>
+<br>
+
+<p align="center">
+  <img src="./client/public/WireFrame_SignUp.png" width="850" alt="Sign Up Wireframe")
+</p>
+<h5 align="center">Sign Up Page</h5>
+
+<br>
+<br>
+<br>
+
+<p align="center">
+  <img src="./client/public/WireFrame_Chat.png" width="850" alt="Main Chat Screen Wireframe")
+</p>
+<h5 align="center">User Chat Screen</h5>
+
+<br>
+<br>
+<br>
+
+<p align="center">
+  <img src="./client/public/WireFrame_Settings.png" width="850" alt="Settings Wireframe")
+</p>
+<h5 align="center">Settings Menu</h5>
+
+<br>
+<br>
+
 ## [Installation](#table-of-contents)
 
 ----
@@ -55,33 +100,6 @@ npm start
 
 
 ````
-
-<br>
-<br>
-
-## [Wireframe](#table-of-contents)
-
- ----
-
-<p align="center">
-  <img src="./public/img/wireframe1.png" width="550" alt="Home Page Wireframe")
-</p>
-<h5 align="center">Login Screen Wireframe</h5>
-<br>
-<br>
-
-<p align="center">
-  <img src="./public/img/wireframe3.png" width="550" alt="Surfboard Inventory Wireframe")
-</p>
-<h5 align="center">Main User Chat Screen Wireframe</h5>
-
-<br>
-<br>
-
-<p align="center">
-  <img src="./public/img/wireframe2.png" width="550" alt=" User Login Wireframe")
-</p>
-<h5 align="center">Settings Menu Wireframe</h5>
 
 <br>
 <br>
