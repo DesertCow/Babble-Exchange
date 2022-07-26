@@ -48,7 +48,7 @@ Instant message applicaiton that allow you to easily stay connected with freinds
  ----
 
 <p align="center">
-  <img src="./client/public/WireFrame_Login.png" width="850" alt="Login Screen Wireframe")
+  <img src="./client/public/WireFrame_Login.png" width="850" alt="Login Screen Wireframe">
 </p>
 <h5 align="center">Login Screen</h5>
 <br>
@@ -56,7 +56,7 @@ Instant message applicaiton that allow you to easily stay connected with freinds
 <br>
 
 <p align="center">
-  <img src="./client/public/WireFrame_SignUp.png" width="850" alt="Sign Up Wireframe")
+  <img src="./client/public/WireFrame_SignUp.png" width="850" alt="Sign Up Wireframe">
 </p>
 <h5 align="center">Sign Up Page</h5>
 
@@ -65,7 +65,7 @@ Instant message applicaiton that allow you to easily stay connected with freinds
 <br>
 
 <p align="center">
-  <img src="./client/public/WireFrame_Chat.png" width="850" alt="Main Chat Screen Wireframe")
+  <img src="./client/public/WireFrame_Chat.png" width="850" alt="Main Chat Screen Wireframe">
 </p>
 <h5 align="center">User Chat Screen</h5>
 
