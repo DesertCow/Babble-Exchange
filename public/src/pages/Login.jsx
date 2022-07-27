@@ -54,7 +54,7 @@ function Login() {
 					JSON.stringify(data.user)
 				);
 				toast.success("Login Was Successful", toastOptions);
-				navigate("/");
+				navigate("/Chat");
 			}
 		}
 	};
