@@ -4,6 +4,9 @@ import App from './App';
 import "./styles.css";
 import "./reset.css";
 
+import { BrowserRouter as Router } from 'react-router-dom';
+import { createRoot } from 'react-dom/client';
+
 
 // const root = ReactDOM.createRoot(document.getElementById('root'));
 // root.render(
@@ -12,4 +15,13 @@ import "./reset.css";
 //   </React.StrictMode>
 // );
 
-ReactDOM.render(<App />, document.getElementById("root"));
+// ReactDOM.render(<App />, document.getElementById("root"));
+
+const rootElement = document.getElementById('root');
+const root = createRoot(rootElement);
+
+root.render(
+  <Router>
+    <App />
+  </Router>
+);
