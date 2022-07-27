@@ -4,10 +4,11 @@ const bcrypt = require("bcrypt");
 
 module.exports.login = async (req, res, next) => {
 
-
   const { username, password } = req.body;
-  console.log("LOGIN CALLED!!!!" + username + "||" + password);
   const user = await User.findOne({ username });
+
+  // console.log("Login Request from " + username + " ||" + password + " ||| " + user);
+  console.log("Login Request from " + username + " ||" + password);
 
   if (!user)
     return res.json({ msg: "Invalid Username", status: false });
@@ -15,10 +16,13 @@ module.exports.login = async (req, res, next) => {
   //* Username Found, now compare against expected password  
   const passValid = await bcrypt.compare(password, user.password);
 
+  console.log("PassValid = " + passValid);
+
   if (!passValid)
     return res.json({ msg: "Invalid Password", status: false })
 
   // TODO: delete user.password;
+  // navigate(`/Chat`);
 
   return res.json({ status: true, user });
 

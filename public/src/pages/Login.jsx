@@ -53,7 +53,7 @@ function Login() {
 					process.env.REACT_APP_LOCALHOST_KEY,
 					JSON.stringify(data.user)
 				);
-
+				toast.success("Login Was Successful", toastOptions);
 				navigate("/");
 			}
 		}
@@ -77,7 +77,14 @@ function Login() {
 					<div className="inputdiv">
 						<p className=" ">Username</p>
 						<div className="">
-							<input className="startinputs" type="text" id="username" name="username" placeholder="" />
+							<input
+								className="startinputs"
+								type="text"
+								id="username"
+								name="username"
+								placeholder=""
+								onChange={(e) => handleChange(e)}
+							/>
 						</div>
 					</div>
 
