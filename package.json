@@ -1,7 +1,7 @@
 {
-  "name": "Babel-Exchange",
+  "name": "babel-exchange",
   "version": "1.0.0",
-  "description": "",
+  "description": "<div align=\"center\"> <h1>Babbel Exchange</h1> <h4>Project 3: Interactive MERN Stack Single-Page Application</h4> </div>",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -18,5 +18,14 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.6"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DesertCow/Babble-Exchange.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/DesertCow/Babble-Exchange/issues"
+  },
+  "homepage": "https://github.com/DesertCow/Babble-Exchange#readme"
 }
