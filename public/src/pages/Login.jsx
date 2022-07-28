@@ -7,7 +7,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 // Enable Navigation via Router DOM
-import { useNavigate, Link } from "react-router-dom";
+// import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
 
@@ -78,10 +79,15 @@ function Login() {
 				password,
 			});
 
+			if (data.status === false) {
+				toast.error("Account Creation Failed!", toastOptions);
+			}
+			if (data.status === true) {
+				toast.success("Account Sign-Up Successful", toastOptions);
+				navigate("/Chat");
+			}
 
 
-			toast.success("Account Sign-Up Successful", toastOptions);
-			navigate("/Chat");
 		}
 	};
 
