@@ -69,27 +69,8 @@ function Login() {
 
 		console.log("Signup Event: " + event);
 
+		navigate("/Register");
 
-		// TODO: Add validateForm() method
-		if (true) {
-
-			const { username, password, email } = values;
-			const { data } = await axios.post(registerRoute, {
-				email,
-				username,
-				password,
-			});
-
-			if (data.status === false) {
-				toast.error("Account Creation Failed!", toastOptions);
-			}
-			if (data.status === true) {
-				toast.success("Account Sign-Up Successful", toastOptions);
-				navigate("/");
-			}
-
-
-		}
 	};
 
 	return (
@@ -132,28 +113,13 @@ function Login() {
 
 					<div className="btndiv text-center">
 						<button className="startbtns" type="button" action="" onClick={(event) => handleSubmit(event)}>Log in</button>
-						<h4 className="m-3">or</h4>
-						<h4 className="m-3 h4">Create an Account</h4>
-						<div className="inputdiv">
-							<p className=" ">Email</p>
-							<div className="text-center">
-								<input
-									className="startinputs"
-									type="email"
-									id="email"
-									name="email"
-									placeholder=""
-									onChange={(e) => handleChange(e)}
-								/>
-							</div>
-						</div>
-						<button className="startbtns m-4" type="button" onClick={(event) => handleSignUp(event)}>Sign up</button>
+						<h4 className="m-3 h4">or</h4>
+						<button className="startbtns m-2" type="button" onClick={(event) => handleSignUp(event)}>Sign up</button>
 					</div>
 
 				</form>
 
 			</div >
-			{/* <ToastContainer /> */}
 		</div >
 
 	);

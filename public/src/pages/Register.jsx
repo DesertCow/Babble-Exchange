@@ -10,7 +10,7 @@ import { loginRoute, registerRoute } from "../utils/apiRoutes";
 function Register() {
 
 	const [values, setValues] = useState({ email: "", username: "", password: "", passwordconfirm: "" });
-	
+
 	const navigate = useNavigate();
 
 	const toastOptions = {
@@ -20,22 +20,25 @@ function Register() {
 		draggable: true,
 		theme: "dark",
 	};
+
+	const inputUpdated = (event) => {
+		setValues({ ...values, [event.target.name]: event.target.value });
+	};
+
 	const handleSignUp = async (event) => {
 		event.preventDefault();
-		
-
-		console.log("Signup Event: " + event);
-
 
 		// TODO: Add validateForm() method
 		if (true) {
 
 			const { email, username, password, passwordconfirm } = values;
+
+			// console.log("User Data: " + email + "||" + username + "||" + password + "||" + passwordconfirm);
+
 			const { data } = await axios.post(registerRoute, {
 				email,
 				username,
-				password,
-				passwordconfirm
+				password
 			});
 
 			if (data.status === false) {
@@ -51,79 +54,84 @@ function Register() {
 	};
 
 	return (
-	
-	<div className="row d-flex align-items-center justify-content-center">
 
-		<div className="mid col-4">
+		<div className="row d-flex align-items-center justify-content-center">
 
-			<h1 className="text-center startheader">Sign up</h1>
+			<div className="mid col-4">
 
-			<form className="signup">
+				<h1 className="text-center startheader">Sign up</h1>
 
-				<div className="inputdiv">
-					<p className=" ">Email</p>
-					<div className="">
-						<input 
-							className="startinputs" 
-							type="text" 
-							id="email" 
-							name="email" 
-							placeholder="" 
-						/>
+				<form className="signup">
+
+					<div className="inputdiv">
+						<p className=" ">Email</p>
+						<div className="">
+							<input
+								className="startinputs"
+								type="text"
+								id="email"
+								name="email"
+								placeholder=""
+								onChange={(e) => inputUpdated(e)}
+							/>
+						</div>
 					</div>
-				</div>
 
-				<div className="inputdiv">
-					<p className=" ">Username</p>
-					<div className="">
-						<input 
-							className="startinputs" 
-							type="text" 
-							id="username" 
-							name="username" 
-							placeholder="" 
-						/>
+					<div className="inputdiv">
+						<p className=" ">Username</p>
+						<div className="">
+							<input
+								className="startinputs"
+								type="text"
+								id="username"
+								name="username"
+								placeholder=""
+								onChange={(e) => inputUpdated(e)}
+							/>
+						</div>
 					</div>
-				</div>
 
-				<div className="inputdiv">
-					<p className=" ">Password</p>
-					<div className="text-center">
-						<input 
-							className="startinputs" 
-							type="password" 
-							id="password" 
-							name="password" 
-							placeholder="" 
-						/>
+					<div className="inputdiv">
+						<p className=" ">Password</p>
+						<div className="text-center">
+							<input
+								className="startinputs"
+								type="password"
+								id="password"
+								name="password"
+								placeholder=""
+								onChange={(e) => inputUpdated(e)}
+							/>
+						</div>
 					</div>
-				</div>
 
-				<div className="inputdiv">
-					<p className=" ">Confirm password</p>
-					<div className="text-center">
-						<input 
-							className="startinputs" 
-							type="password" 
-							id="passwordconfirm" 
-							name="passwordconfirm" 
-							placeholder="" />
+					<div className="inputdiv">
+						<p className=" ">Confirm password</p>
+						<div className="text-center">
+							<input
+								className="startinputs"
+								type="password"
+								id="passwordconfirm"
+								name="passwordconfirm"
+								placeholder=""
+								onChange={(e) => inputUpdated(e)}
+							/>
+						</div>
 					</div>
-				</div>
 
-				<div className="btndiv text-center">
-						<button 
-							className="startbtns" 
-							type="button" 
+					<div className="btndiv text-center">
+						<button
+							className="startbtns"
+							type="button"
 							onClick={(event) => handleSignUp(event)}>Submit
 						</button>
-				</div>
+					</div>
 
-			</form>
+				</form>
+
+			</div>
 
 		</div>
-
-	</div>
 
 	)
 }
