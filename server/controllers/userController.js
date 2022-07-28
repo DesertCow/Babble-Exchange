@@ -9,17 +9,17 @@ module.exports.login = async (req, res, next) => {
 
   // console.log("Login Request from " + username + " ||" + password + " ||| " + user);
 
-  console.log("\nLogin Request -> User: \x1b[33m" + username + "\x1b[0m || Password = \x1b[35m" + password + "\x1b[0m");
+  console.log("\nLogin Request\n   User: \x1b[33m" + username + "\x1b[0m\n   Password: \x1b[35m" + password + "\x1b[0m");
 
-  if (!user)
+  if (!user) {
+    console.log("\x1b[35mLogin Failed\x1b[0m");
     return res.json({ msg: "Invalid Username", status: false });
+  }
 
   //* Username Found, now compare against expected password  
   const passValid = await bcrypt.compare(password, user.password);
 
-
   // console.log("PassValid = " + passValid);
-
 
   if (!passValid) {
     console.log("\x1b[35mLogin Failed\x1b[0m");
@@ -60,7 +60,7 @@ module.exports.register = async (req, res, next) => {
   // const { username, email, password } = req.body;
   const { username, password, email } = req.body;
 
-  console.log("\nCreate New User -> User: \x1b[33m" + username + "\x1b[0m || Password = \x1b[35m" + password + "\x1b[0m || " + email);
+  console.log("\nCreate New User \n   User: \x1b[33m" + username + "\x1b[0m\n   Password: \x1b[35m" + password + "\x1b[0m\n   Email: " + email);
 
   //* Search Database to confirm user does not exist
   const userExists = await User.findOne({ username });
