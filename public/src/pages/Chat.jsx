@@ -38,7 +38,7 @@ export default function Chat() {
 	useEffect(() => {
 		if (currentUser) {
 			// const data = axios.get(`${allUsersRoute}/${currentUser._id}`);
-			const data = axios.get(`${allUsersRoute}`);
+			const data = axios.get(`${allUsersRoute}/${currentUser._id}`);
 			setContacts(data.data);
 		}
 	}, [currentUser]);
@@ -54,7 +54,7 @@ export default function Chat() {
 				<div className="container">
 					{/* <div changeChat={handleChatChange}> */}
 					<Contacts contacts={contacts} changeChat={handleChatChange} />
-					{currentChat === undefined ? (
+					{currentChat === "ndefined" ? (
 						< Welcome />
 					) : (
 						<ChatContainer currentChat={currentChat} socket={socket} />
