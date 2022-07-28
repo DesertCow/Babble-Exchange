@@ -7,6 +7,8 @@ import "./reset.css";
 import { BrowserRouter as Router } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
 
+import { ToastContainer } from "react-toastify";
+
 
 // const root = ReactDOM.createRoot(document.getElementById('root'));
 // root.render(
@@ -21,7 +23,8 @@ const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
 
 root.render(
-  <Router>
+  <div>
     <App />
-  </Router>
+    <ToastContainer />
+  </div>
 );
