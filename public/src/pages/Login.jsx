@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { loginRoute } from "../utils/apiRoutes";
+import { loginRoute, registerRoute } from "../utils/apiRoutes";
 
 // React Toastify
 import { ToastContainer, toast } from "react-toastify";
@@ -37,6 +37,7 @@ function Login() {
 
 		console.log("EVENT SUBMIT!" + event);
 
+		// TODO: Add validateForm() method
 		// if (validateForm()) {
 		if (true) {
 			const { username, password } = values;
@@ -61,8 +62,27 @@ function Login() {
 
 
 	const handleSignUp = async (event) => {
-		navigate("/Register");
+		// navigate("/Register");
+		event.preventDefault();
 
+		console.log("Signup Event: " + event);
+
+
+		// TODO: Add validateForm() method
+		if (true) {
+
+			const { username, password, email } = values;
+			const { data } = await axios.post(registerRoute, {
+				email,
+				username,
+				password,
+			});
+
+
+
+			toast.success("Account Sign-Up Successful", toastOptions);
+			navigate("/Chat");
+		}
 	};
 
 	return (
@@ -105,6 +125,20 @@ function Login() {
 					<div className="btndiv text-center">
 						<button className="startbtns" type="button" action="" onClick={(event) => handleSubmit(event)}>Log in</button>
 						<h4>or</h4>
+						<br></br>
+						<div className="inputdiv">
+							<p className=" ">Email</p>
+							<div className="text-center">
+								<input
+									className="startinputs"
+									type="email"
+									id="email"
+									name="email"
+									placeholder=""
+									onChange={(e) => handleChange(e)}
+								/>
+							</div>
+						</div>
 						<button className="startbtns" type="button" onClick={(event) => handleSignUp(event)}>Sign up</button>
 					</div>
 

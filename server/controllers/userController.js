@@ -8,13 +8,15 @@ module.exports.login = async (req, res, next) => {
   const user = await User.findOne({ username });
 
   // console.log("Login Request from " + username + " ||" + password + " ||| " + user);
-  console.log("Login Request from " + username + " ||" + password);
+
+  console.log("\nLogin Request -> User: \x1b[33m" + username + "\x1b[0m || Password = \x1b[35m" + password + "\x1b[0m");
 
   if (!user)
     return res.json({ msg: "Invalid Username", status: false });
 
   //* Username Found, now compare against expected password  
   const passValid = await bcrypt.compare(password, user.password);
+
 
   console.log("PassValid = " + passValid);
 
@@ -51,7 +53,10 @@ module.exports.getAllUsers = async (req, res, next) => {
 };
 
 module.exports.register = async (req, res, next) => {
-  const { username, email, password } = req.body;
+  // const { username, email, password } = req.body;
+  const { username, password, email } = req.body;
+
+  console.log("\nNew User -> User: \x1b[33m" + username + "\x1b[0m || Password = \x1b[35m" + password + "\x1b[0m || " + email);
 
   //* Search Database to confirm user does not exist
   const userExists = await User.findOne({ username });
