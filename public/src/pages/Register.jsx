@@ -28,17 +28,12 @@ function Register() {
 	const handleSignUp = async (event) => {
 		event.preventDefault();
 
-
-		console.log("Signup Event: " + event);
-
-
 		// TODO: Add validateForm() method
 		if (true) {
 
 			const { email, username, password, passwordconfirm } = values;
 
-			console.log("Values = " + values);
-			console.log("User Data: " + email + "||" + username + "||" + password + "||" + passwordconfirm);
+			// console.log("User Data: " + email + "||" + username + "||" + password + "||" + passwordconfirm);
 
 			const { data } = await axios.post(registerRoute, {
 				email,

@@ -71,26 +71,6 @@ function Login() {
 
 		navigate("/Register");
 
-		// // TODO: Add validateForm() method
-		// if (true) {
-
-		// 	const { username, password, email } = values;
-		// 	const { data } = await axios.post(registerRoute, {
-		// 		email,
-		// 		username,
-		// 		password,
-		// 	});
-
-		// 	if (data.status === false) {
-		// 		toast.error("Account Creation Failed!", toastOptions);
-		// 	}
-		// 	if (data.status === true) {
-		// 		toast.success("Account Sign-Up Successful", toastOptions);
-		// 		navigate("/");
-		// 	}
-
-
-		// }
 	};
 
 	return (
@@ -140,7 +120,6 @@ function Login() {
 				</form>
 
 			</div >
-			{/* <ToastContainer /> */}
 		</div >
 
 	);
