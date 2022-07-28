@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
-// import styled from "styled-components";
+import styled from "styled-components";
 
 import { allUsersRoute, host } from "../utils/apiRoutes";
 import ChatContainer from "../components/ChatContainer";
@@ -20,14 +20,12 @@ export default function Chat() {
 	const [currentChat, setCurrentChat] = useState(undefined);
 	const [currentUser, setCurrentUser] = useState(undefined);
 
-	useEffect(async () => {
+	useEffect(() => {
 		if (!localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
 			navigate("/login");
 		} else {
 			setCurrentUser(
-				await JSON.parse(
-					localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
-				)
+				JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY))
 			);
 		}
 	}, []);
@@ -43,19 +41,42 @@ export default function Chat() {
 
 	return (
 		<>
-			{/* <Container> */}
-			<div className="container">
-				{currentChat === undefined ? (
-					`No Current Chat AHHH CHAT:${currentChat}`
-				) : (
-					<ChatContainer currentChat={currentChat} socket={socket} />
-				)}
-			</div>
-			{/* </Container> */}
+			<Container>
+				<div className="container">
+					<div changeChat={handleChatChange}>
+						{currentChat === undefined ? (
+							`No Current Chat AHHH CHAT:${currentChat}`
+						) : (
+							<ChatContainer currentChat={currentChat} socket={socket} />
+						)}
+					</div>
+				</div>
+			</Container>
 		</>
 	);
 
 }
+
+const Container = styled.div`
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+  background-color: #131324;
+  .container {
+    height: 85vh;
+    width: 85vw;
+    background-color: #00000076;
+    display: grid;
+    grid-template-columns: 25% 75%;
+    @media screen and (min-width: 720px) and (max-width: 1080px) {
+      grid-template-columns: 35% 65%;
+    }
+  }
+`;
 
 
 
