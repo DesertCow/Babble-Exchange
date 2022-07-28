@@ -3,7 +3,7 @@ import axios from "axios";
 import { loginRoute, registerRoute } from "../utils/apiRoutes";
 
 // React Toastify
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 // Enable Navigation via Router DOM
@@ -24,8 +24,9 @@ function Login() {
 	};
 
 	useEffect(() => {
+
 		if (localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
-			navigate("/");
+			// navigate("/");
 		}
 	}, []);
 
@@ -56,7 +57,7 @@ function Login() {
 					JSON.stringify(data.user)
 				);
 				toast.success("Login Was Successful", toastOptions);
-				navigate("/Chat");
+				navigate("/");
 			}
 		}
 	};
@@ -84,7 +85,7 @@ function Login() {
 			}
 			if (data.status === true) {
 				toast.success("Account Sign-Up Successful", toastOptions);
-				navigate("/Chat");
+				navigate("/");
 			}
 
 
@@ -96,7 +97,8 @@ function Login() {
 
 			<div className="mid col-4">
 
-				<h1 className="text-center startheader">Welcome</h1>
+				<h1 className="text-center">Welcome to</h1>
+				<h1 className="text-center startheader">Babble Exchange</h1>
 
 				<form className="welcome">
 
@@ -130,8 +132,8 @@ function Login() {
 
 					<div className="btndiv text-center">
 						<button className="startbtns" type="button" action="" onClick={(event) => handleSubmit(event)}>Log in</button>
-						<h4>or</h4>
-						<br></br>
+						<h4 className="m-3">or</h4>
+						<h4 className="m-3 h4">Create an Account</h4>
 						<div className="inputdiv">
 							<p className=" ">Email</p>
 							<div className="text-center">
@@ -145,13 +147,13 @@ function Login() {
 								/>
 							</div>
 						</div>
-						<button className="startbtns" type="button" onClick={(event) => handleSignUp(event)}>Sign up</button>
+						<button className="startbtns m-4" type="button" onClick={(event) => handleSignUp(event)}>Sign up</button>
 					</div>
 
 				</form>
 
 			</div >
-			<ToastContainer />
+			{/* <ToastContainer /> */}
 		</div >
 
 	);
