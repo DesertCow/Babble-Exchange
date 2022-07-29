@@ -52,7 +52,7 @@ const Container = styled.div`
   display: grid;
   grid-template-rows: 10% 75% 15%;
   overflow: hidden;
-  background-color: #080420;
+  background-color: rgb(201, 213, 230);
   .brand {
     display: flex;
     align-items: center;
@@ -69,9 +69,8 @@ const Container = styled.div`
   .contacts {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    overflow: auto;
-    gap: 0.8rem;
+    height: 100%;
+    gap: 0.3rem;
     &::-webkit-scrollbar {
       width: 0.2rem;
       &-thumb {
@@ -81,16 +80,15 @@ const Container = styled.div`
       }
     }
     .contact {
-      background-color: #ffffff34;
-      min-height: 5rem;
+      background-color: #a6bad6;
+      min-height: 4rem;
       cursor: pointer;
-      width: 90%;
-      border-radius: 0.2rem;
-      padding: 0.4rem;
+      width: 100%;
+      padding-left: 0.4rem;
       display: flex;
       gap: 1rem;
       align-items: center;
-      transition: 0.5s ease-in-out;
+      transition: 0.2s ease-in-out;
       .avatar {
         img {
           height: 3rem;
@@ -102,6 +100,9 @@ const Container = styled.div`
         }
       }
     }
+	.contact:hover {
+		background-color: #b6c8de;
+	}
     .selected {
       background-color: #9a86f3;
     }
