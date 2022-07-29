@@ -8,7 +8,7 @@ import { allUsersRoute, host } from "../utils/apiRoutes";
 import ChatContainer from "../components/ChatContainer";
 
 import Contacts from "../components/Contacts";
-// import Welcome from "../components/Welcome";
+import Welcome from "../components/Welcome";
 
 
 export default function Chat() {
@@ -35,6 +35,16 @@ export default function Chat() {
 			socket.current.emit("add-user", currentUser._id);
 		}
 	}, [currentUser]);
+
+	useEffect(() => {
+		// if (currentUser) {
+		// const data = axios.get(`${allUsersRoute}/${currentUser._id}`);
+		const data = axios.get(`http://localhost:3001/api/auth/allusers/62e2dd730d5d64d0c8d9d0de`);
+		// console.log("DATA = " + data.data);
+		// setContacts(data.data);
+		// }
+	}, [currentUser]);
+
 	const handleChatChange = (chat) => {
 		setCurrentChat(chat);
 	};
@@ -43,13 +53,12 @@ export default function Chat() {
 		<>
 			<Container>
 				<div className="container">
-					<div changeChat={handleChatChange}>
-						{currentChat === undefined ? (
-							`No Current Chat -> CHAT:${currentChat}`
-						) : (
-							<ChatContainer currentChat={currentChat} socket={socket} />
-						)}
-					</div>
+					<Contacts contacts={contacts} changeChat={handleChatChange} />
+					{currentChat === undefined ? (
+						<Welcome />
+					) : (
+						<ChatContainer currentChat={currentChat} socket={socket} />
+					)}
 				</div>
 			</Container>
 		</>
