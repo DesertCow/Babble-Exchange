@@ -141,9 +141,7 @@ body {
 
 /* Create an active/current "tab button" class */
 .tab button.active {
-	background-color: rgb(248,
-		251,
-		255);
+	background-color: rgb(248, 251, 255);
 	width: 100%;
 	
 }
