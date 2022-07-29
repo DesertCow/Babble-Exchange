@@ -36,12 +36,15 @@ module.exports.login = async (req, res, next) => {
 
 module.exports.logOut = (req, res, next) => {
 
+  console.log("\n\x1b[33mLogout Request\x1b[0m\n   User ID: \x1b[33m" + req.params.id + "\x1b[0m");
+
   if (!req.params.id)
     return res.json({ msg: "Invalid or Missing UserID" });
 
   // onlineUsers.delete(req.params.id);
-  console.log("LOG OUT HERE... ");
-  return res.status(200).send();
+  console.log("\x1b[32mLogout Successful\x1b[0m");
+  // return res.status(200).send();
+  return res.status(200).json({ message: "User [" + req.params.id + "] has been logged out... Goodbye!", status: 200 })
 };
 
 module.exports.getAllUsers = async (req, res, next) => {
