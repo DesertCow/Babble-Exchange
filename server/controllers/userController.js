@@ -9,7 +9,7 @@ module.exports.login = async (req, res, next) => {
 
   // console.log("Login Request from " + username + " ||" + password + " ||| " + user);
 
-  console.log("\nLogin Request\n   User: \x1b[33m" + username + "\x1b[0m\n   Password: \x1b[35m" + password + "\x1b[0m");
+  console.log("\n\x1b[33mLogin Request\x1b[0m\n   User: \x1b[33m" + username + "\x1b[0m\n   Password: \x1b[35m" + password + "\x1b[0m");
 
   if (!user) {
     console.log("\x1b[35mLogin Failed\x1b[0m");
@@ -60,7 +60,7 @@ module.exports.register = async (req, res, next) => {
   // const { username, email, password } = req.body;
   const { username, password, email } = req.body;
 
-  console.log("\nCreate New User \n   User: \x1b[33m" + username + "\x1b[0m\n   Password: \x1b[35m" + password + "\x1b[0m\n   Email: " + email);
+  console.log("\n\x1b[33mCreate New User\x1b[0m\n   User: \x1b[33m" + username + "\x1b[0m\n   Password: \x1b[35m" + password + "\x1b[0m\n   Email: " + email);
 
   //* Search Database to confirm user does not exist
   const userExists = await User.findOne({ username });
