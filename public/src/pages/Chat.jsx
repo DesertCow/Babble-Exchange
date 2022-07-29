@@ -24,8 +24,8 @@ export default function Chat() {
 		if (!localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
 			navigate("/login");
 		} else {
-			setCurrentUser(JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)))
-			console.log("User Set = " + JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)))
+			setCurrentUser(JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY))
+			);
 		}
 	}, []);
 	useEffect(() => {
@@ -39,12 +39,14 @@ export default function Chat() {
 		// if (currentUser) {
 		console.log("API Route: " + allUsersRoute + "/" + JSON.stringify(currentUser));
 		let finalApiRoute = `${allUsersRoute}/62e2dd730d5d64d0c8d9d0de`;
-		console.log("API Final Route: " + finalApiRoute)
-
-		// TODO: Fix Hardcode work-around for API Call
+		let tempID = JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY))._id;
+		console.log("TempID " + tempID)
+		console.log(`${allUsersRoute}/${tempID}`)
 		//const data = axios.get(`${allUsersRoute}/${currentUser._id}`);
+		const data = await axios.get(`${allUsersRoute}/${tempID}`);
 		//const data = axios.get(`${finalApiRoute}`);
-		const data = await axios.get(`http://localhost:3001/api/auth/allusers/62e2db360d5d64d0c8d9d0ca`);
+		// const data = await axios.get(`http://localhost:3001/api/auth/allusers/62e35489eafe0dbc68a0898a`);
+		//const data = await axios.get(`${allUsersRoute}/62e35489eafe0dbc68a0898a`);
 		// console.log("DATA = " + data.data);
 		setContacts(data.data);
 		// }
@@ -79,7 +81,7 @@ const Container = styled.div`
   justify-content: center;
   gap: 1rem;
   align-items: center;
-  background-color: #131324;
+  background-color: #e76f51;
   .container {
     height: 85vh;
     width: 85vw;
@@ -89,8 +91,5 @@ const Container = styled.div`
     @media screen and (min-width: 720px) and (max-width: 1080px) {
       grid-template-columns: 35% 65%;
     }
-		.contacts {
-			height: 80%;
-		}
   }
 `;
