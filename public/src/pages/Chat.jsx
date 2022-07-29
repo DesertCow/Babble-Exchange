@@ -35,6 +35,7 @@ export default function Chat() {
 		}
 	}, [currentUser]);
 
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	useEffect(async () => {
 		// if (currentUser) {
 		console.log("API Route: " + allUsersRoute + "/" + JSON.stringify(currentUser));
@@ -53,14 +54,16 @@ export default function Chat() {
 	}, []);
 
 	const handleChatChange = (chat) => {
+		console.log("Handle Chat Change!" + JSON.stringify(chat._id));
 		setCurrentChat(chat);
+		// console.log("REAL CHAT? = " + chat.username);
 	};
 
 	return (
 		<>
 			<Container>
 				<div className="container">
-					<Contacts contacts={contacts} changeChat={handleChatChange} />
+					<Contacts contacts={contacts} className="contacts" changeChat={handleChatChange} />
 					{currentChat === undefined ? (
 						<Welcome />
 					) : (
@@ -93,5 +96,9 @@ const Container = styled.div`
     @media screen and (min-width: 720px) and (max-width: 1080px) {
       grid-template-columns: 35% 65%;
     }
+	.contacts {
+		width: 100%;
+		height: 100%;
+		}
   }
 `;
