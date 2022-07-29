@@ -14,16 +14,17 @@ export default function ChatContainer({ currentChat, socket }) {
   // const scrollRef = useRef();
   const [arrivalMessage, setArrivalMessage] = useState(null);
 
-  // useEffect(async () => {
-  //   const data = await JSON.parse(
-  //     localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
-  //   );
-  //   const response = await axios.post(recieveMessageRoute, {
-  //     from: data._id,
-  //     to: currentChat._id,
-  //   });
-  //   setMessages(response.data);
-  // }, [currentChat]);
+  useEffect(async () => {
+    const data = await JSON.parse(
+      localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
+    );
+    const response = await axios.post(recieveMessageRoute, {
+      // from: data._id,
+      from: "62e1d3aa4a95fe7a70581e40",
+      to: currentChat._id,
+    });
+    setMessages(response.data);
+  }, [currentChat]);
 
   useEffect(() => {
     const getCurrentChat = async () => {
