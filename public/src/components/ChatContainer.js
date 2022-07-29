@@ -10,7 +10,7 @@ import { sendMessageRoute, recieveMessageRoute } from "../utils/apiRoutes";
 
 export default function ChatContainer({ currentChat, socket }) {
 
-  const [messages, setMessages] = useState([]);
+  const [messageState, setMessages] = useState({ messages: [] });
   // const scrollRef = useRef();
   const [arrivalMessage, setArrivalMessage] = useState(null);
 
@@ -18,13 +18,19 @@ export default function ChatContainer({ currentChat, socket }) {
     const data = await JSON.parse(
       localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
     );
+    // from: data._id, to: currentChat._id,
+
+    console.log("Current CHAT" + JSON.stringify(currentChat._id));
     const response = await axios.post(recieveMessageRoute, {
-      // from: data._id,
-      from: "62e1d3aa4a95fe7a70581e40",
-      to: currentChat._id,
+      // sender: currentChat._id,
+      // recipient: data._id,
+      sender: "62e1de14f2a33db40ca79f36",
+      recipient: "62e1d3aa4a95fe7a70581e40",
     });
-    setMessages(response.data);
-  }, [currentChat]);
+    console.log(response.data);
+    setMessages({ ...messageState, messages: response.data });
+    setTimeout(() => console.log(messageState), 5000)
+  }, []);
 
   useEffect(() => {
     const getCurrentChat = async () => {
@@ -43,19 +49,19 @@ export default function ChatContainer({ currentChat, socket }) {
       localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
     );
     socket.current.emit("send-msg", {
-      to: currentChat._id,
-      from: data._id,
+      recipient: currentChat._id,
+      sender: data._id,
       msg,
     });
     await axios.post(sendMessageRoute, {
-      from: data._id,
-      to: currentChat._id,
+      sender: data._id,
+      recipient: currentChat._id,
       message: msg,
     });
 
-    const msgs = [...messages];
-    msgs.push({ fromSelf: true, message: msg });
-    setMessages(msgs);
+    // const msgs = [...messages];
+    // msgs.push({ fromSelf: true, message: msg });
+    // setMessages({ ...messageState, messages: msgs });
   };
 
   useEffect(() => {
@@ -76,32 +82,8 @@ export default function ChatContainer({ currentChat, socket }) {
 
   return (
     <Container>
-      <div className="chat-header">
-        <div className="user-details">
-          <div className="username">
-            <h3>{currentChat.username}</h3>
-          </div>
-        </div>
-        {/* <Logout /> */}
-      </div>
-      <div className="chat-messages">
-        {messages.map((message) => {
-          return (
-            // <div ref={scrollRef} key={uuidv4()}>
-            <div key={uuidv4()}>
-              <div
-                className={`message ${message.fromSelf ? "sended" : "recieved"
-                  }`}
-              >
-                <div className="content ">
-                  <p>{message.message}</p>
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-      {/* <ChatInput handleSendMsg={handleSendMsg} /> */}
+      <h1>Hello World!</h1>
+      {JSON.stringify(messageState.messages)}
     </Container>
   );
 
