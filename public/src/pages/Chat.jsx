@@ -7,8 +7,8 @@ import styled from "styled-components";
 import { allUsersRoute, host } from "../utils/apiRoutes";
 import ChatContainer from "../components/ChatContainer";
 
-// import Contacts from "../components/Contacts";
-// import Welcome from "../components/Welcome";
+import Contacts from "../components/Contacts";
+import Welcome from "../components/Welcome";
 
 
 export default function Chat() {
@@ -16,7 +16,7 @@ export default function Chat() {
 	const navigate = useNavigate();
 	const socket = useRef();
 
-	// const [contacts, setContacts] = useState([]);
+	const [contacts, setContacts] = useState([]);
 	const [currentChat, setCurrentChat] = useState(undefined);
 	const [currentUser, setCurrentUser] = useState(undefined);
 
@@ -43,13 +43,12 @@ export default function Chat() {
 		<>
 			<Container>
 				<div className="container">
-					<div changeChat={handleChatChange}>
-						{currentChat === undefined ? (
-							`No Current Chat AHHH CHAT:${currentChat}`
-						) : (
-							<ChatContainer currentChat={currentChat} socket={socket} />
-						)}
-					</div>
+					<Contacts contacts={contacts} changeChat={handleChatChange} />
+					{currentChat === undefined ? (
+						<Welcome />
+					) : (
+						<ChatContainer currentChat={currentChat} socket={socket} />
+					)}
 				</div>
 			</Container>
 		</>
