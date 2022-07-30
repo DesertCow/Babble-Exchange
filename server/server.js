@@ -27,7 +27,7 @@ mongoose.connect(process.env.MONGO_URL, {
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
-const server = app.listen(process.env.PORT, () => {
+const server = app.listen(process.env.PORT || 3001, () => {
   // console.log(`Server Hosted on Port ${process.env.PORT}`)
   console.log(`| 🚀  Live API: \x1b[34mhttp://localhost:${process.env.PORT}/api\x1b[0m 🚀 |`);
 })
