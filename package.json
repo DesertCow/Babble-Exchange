@@ -4,7 +4,7 @@
   "description": "<div align=\"center\"> <h1>Babbel Exchange</h1> <h4>Project 3: Interactive MERN Stack Single-Page Application</h4> </div>",
   "main": "server.js",
   "scripts": {
-    "start": "node ./server/server.js",
+    "start": "node ./server/server.js && cd public/ && npm run start-client",
     "build": "cd public/ && npm install && npm run build",
     "seed": "node seeds/seed.js",
     "watch": "nodemon server.js"
