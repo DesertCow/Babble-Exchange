@@ -4,6 +4,7 @@
   "description": "<div align=\"center\"> <h1>Babbel Exchange</h1> <h4>Project 3: Interactive MERN Stack Single-Page Application</h4> </div>",
   "main": "server.js",
   "scripts": {
+    "prestart": "npm i",
     "start": "node ./server/server.js",
     "seed": "node seeds/seed.js",
     "watch": "nodemon server.js"
