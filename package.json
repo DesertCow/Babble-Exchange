@@ -4,7 +4,7 @@
   "description": "<div align=\"center\"> <h1>Babbel Exchange</h1> <h4>Project 3: Interactive MERN Stack Single-Page Application</h4> </div>",
   "main": "server.js",
   "scripts": {
-    "start": "node ./server/server.js && cd public/ && npm run start-client",
+    "start": "concurrently \"cd server && npm start\" \"cd public && npm start\"",
     "build": "cd public/ && npm install && npm run build",
     "seed": "node seeds/seed.js",
     "watch": "nodemon server.js"
@@ -13,17 +13,18 @@
   "license": "ISC",
   "dependencies": {
     "apollo-server-express": "^3.6.2",
-    "graphql": "^16.3.0",
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "graphql": "^16.3.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.4.7",
     "nodemon": "^2.0.19",
     "socket.io": "^4.5.1"
   },
   "devDependencies": {
+    "concurrently": "^7.3.0",
     "nodemon": "^2.0.6"
   },
   "repository": {
