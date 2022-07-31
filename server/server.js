@@ -28,10 +28,9 @@ mongoose.connect(process.env.MONGO_URL, {
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
+//* Share Build output directory
 app.use(express.static(path.join(__dirname, '../public/build')))
-
 app.get('*', (_, res) => {
-  console.log("GET * Called!");
   res.sendFile(path.join(__dirname, '../public/build/index.html'), (err) => {
     if (err) {
       res.status(500).send(err)
