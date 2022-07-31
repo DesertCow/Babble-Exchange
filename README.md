@@ -24,7 +24,7 @@
 
   <div align="center">
   <h3> Hosted by Heroku</h3>
-  <a href="https://babbel-exchange.herokuapp.com/">https://babbel-exchange.herokuapp.com/</a>
+  <a href="https://babble-exchange.herokuapp.com/">https://babble-exchange.herokuapp.com/</a>
   </div>
   <br>
   <br>
