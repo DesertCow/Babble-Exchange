@@ -14,6 +14,7 @@ export default function ChatContainer({ currentChat, socket }) {
   // const scrollRef = useRef();
   const [arrivalMessage, setArrivalMessage] = useState(null);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async () => {
     const data = await JSON.parse(
       localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
@@ -22,14 +23,17 @@ export default function ChatContainer({ currentChat, socket }) {
 
     console.log("Current CHAT" + JSON.stringify(currentChat._id));
     const response = await axios.post(recieveMessageRoute, {
-      // sender: currentChat._id,
-      // recipient: data._id,
-      sender: "62e1de14f2a33db40ca79f36",
-      recipient: "62e1d3aa4a95fe7a70581e40",
+      sender: currentChat._id,
+      //recipient: data._id,
+      // recipient: currentChat._id,
+      // sender: "62e6737754b047e1094f8f7b",
+      // sender: "62e6738b54b047e1094f8f80",
+      recipient: "62e6737754b047e1094f8f7b",
     });
+    console.log("########################################");
     console.log(response.data);
     setMessages({ ...messageState, messages: response.data });
-    setTimeout(() => console.log(messageState), 5000)
+    setTimeout(() => console.log(messageState), 3000)
   }, []);
 
   useEffect(() => {
@@ -59,7 +63,8 @@ export default function ChatContainer({ currentChat, socket }) {
       message: msg,
     });
 
-    // const msgs = [...messages];
+    // const msgs = [...messageState];
+    // console.log(JSON.stringify(messageState));
     // msgs.push({ fromSelf: true, message: msg });
     // setMessages({ ...messageState, messages: msgs });
   };
