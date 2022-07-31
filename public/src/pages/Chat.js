@@ -87,20 +87,17 @@ const Container = styled.div`
   gap: 1rem;
   align-items: center;
   background-color: rgb(244, 246, 249);
-  .container {
+  	.container {
+	padding-left: 0 !important;
     height: 85vh;
     width: 85vw;
     background-color: rgb(248, 251, 255);
-	box-shadow: 0px 10px 30px rgba(102, 118, 169, 0.099);
-	border-radius: 16px;
+	box-shadow: 0px 10px 27px rgba(102, 118, 169, 0.12);
+	border-radius: 9px;
     display: grid;
     grid-template-columns: 25% 75%;
     @media screen and (min-width: 720px) and (max-width: 1080px) {
       grid-template-columns: 35% 65%;
     }
-	.contacts {
-		width: 100%;
-		height: 100%;
-		}
   }
 `;
