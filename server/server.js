@@ -5,6 +5,7 @@ const socket = require("socket.io");
 const authRoutes = require("./routes/auth");
 const app = express();
 const messageRoutes = require("./routes/messages");
+const path = require('path');
 require('dotenv').config();
 
 
@@ -26,6 +27,17 @@ mongoose.connect(process.env.MONGO_URL, {
 //* Setup API Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
+
+app.use(express.static(path.join(__dirname, '../public/build')))
+
+app.get('*', (_, res) => {
+  console.log("GET * Called!");
+  res.sendFile(path.join(__dirname, '../public/build/index.html'), (err) => {
+    if (err) {
+      res.status(500).send(err)
+    }
+  })
+})
 
 const server = app.listen(process.env.PORT || 3001, () => {
   // console.log(`Server Hosted on Port ${process.env.PORT}`)
