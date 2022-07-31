@@ -43,7 +43,8 @@ export default function ChatContainer({ currentChat, socket }) {
       setTimeout(() => console.log(messageState), 3000);
 
     }
-  }, [messageState]);
+    fetchLocalData();
+  }, [currentChat]);
 
   useEffect(() => {
     const getCurrentChat = async () => {
@@ -96,9 +97,35 @@ export default function ChatContainer({ currentChat, socket }) {
 
   return (
     <Container>
-      <h1>Selected Chat: {currentChat.username}----[{currentChat._id}]--- {currentChat.email}</h1>
+      {/* <h1>Selected Chat: {currentChat.username}----[{currentChat._id}]--- {currentChat.email}</h1>
       <h1>Hello World!</h1>
-      {JSON.stringify(messageState.messages)}
+      {JSON.stringify(messageState.messages)} */}
+      <div className="chat-header">
+        <div className="user-details">
+          <div className="username">
+            <h3>{currentChat.username}</h3>
+          </div>
+        </div>
+        {/* <Logout /> */}
+      </div>
+      <div className="chat-messages">
+        {messageState.messages.map((message) => {
+          return (
+            // <div ref={scrollRef} key={uuidv4()}>
+            <div key={uuidv4()}>
+              <div
+                className={`message ${message.fromSelf ? "sended" : "recieved"
+                  }`}
+              >
+                <div className="content ">
+                  <p>{message.message}</p>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      {/* <ChatInput handleSendMsg={handleSendMsg} /> */}
     </Container>
   );
 
