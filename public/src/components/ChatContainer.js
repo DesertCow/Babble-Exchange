@@ -21,20 +21,21 @@ export default function ChatContainer({ currentChat, socket }) {
     );
     // from: data._id, to: currentChat._id,
 
-    console.log("Current CHAT" + JSON.stringify(currentChat._id));
+    console.log("Sender:" + JSON.stringify(currentChat._id));
+    console.log("Reciver:" + JSON.stringify(data._id));
     const response = await axios.post(recieveMessageRoute, {
       sender: currentChat._id,
-      //recipient: data._id,
+      recipient: data._id,
       // recipient: currentChat._id,
       // sender: "62e6737754b047e1094f8f7b",
       // sender: "62e6738b54b047e1094f8f80",
-      recipient: "62e6737754b047e1094f8f7b",
+      // recipient: "62e6737754b047e1094f8f7b",
     });
     console.log("########################################");
     console.log(response.data);
     setMessages({ ...messageState, messages: response.data });
     setTimeout(() => console.log(messageState), 3000)
-  }, []);
+  }, [currentChat]);
 
   useEffect(() => {
     const getCurrentChat = async () => {
@@ -87,6 +88,7 @@ export default function ChatContainer({ currentChat, socket }) {
 
   return (
     <Container>
+      <h1>Selected Chat: {currentChat.username}----[{currentChat._id}]--- {currentChat.email}</h1>
       <h1>Hello World!</h1>
       {JSON.stringify(messageState.messages)}
     </Container>
