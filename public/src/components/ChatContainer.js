@@ -21,14 +21,14 @@ export default function ChatContainer({ currentChat, socket }) {
     );
     // from: data._id, to: currentChat._id,
 
-    console.log("Current CHAT" + JSON.stringify(currentChat._id));
+    console.log("Current CHAT" + JSON.stringify(currentChat));
     const response = await axios.post(recieveMessageRoute, {
       sender: currentChat._id,
-      //recipient: data._id,
-      //recipient: currentChat._id,
+      // recipient: data._id,
+      recipient: currentChat._id,
       // sender: "62e6737754b047e1094f8f7b",
       // sender: "62e6738b54b047e1094f8f80",
-      recipient: "62e6737754b047e1094f8f7b",
+      // recipient: "62e6737754b047e1094f8f7b",
     });
     console.log("########################################");
 
