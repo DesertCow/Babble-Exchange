@@ -14,28 +14,36 @@ export default function ChatContainer({ currentChat, socket }) {
   // const scrollRef = useRef();
   const [arrivalMessage, setArrivalMessage] = useState(null);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(async () => {
-    const data = await JSON.parse(
-      localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
-    );
-    // from: data._id, to: currentChat._id,
 
-    console.log("Sender:" + JSON.stringify(currentChat._id));
-    console.log("Reciver:" + JSON.stringify(data._id));
-    const response = await axios.post(recieveMessageRoute, {
-      sender: currentChat._id,
-      recipient: data._id,
-      // recipient: currentChat._id,
-      // sender: "62e6737754b047e1094f8f7b",
-      // sender: "62e6738b54b047e1094f8f80",
-      // recipient: "62e6737754b047e1094f8f7b",
-    });
-    console.log("########################################");
-    console.log(response.data);
-    setMessages({ ...messageState, messages: response.data });
-    setTimeout(() => console.log(messageState), 3000)
-  }, [currentChat]);
+  useEffect(() => {
+
+    async function fetchLocalData() {
+
+      const data = await JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY));
+
+      console.log("Sender:" + JSON.stringify(currentChat._id));
+      console.log("Reciver:" + JSON.stringify(data._id));
+      const response = await axios.post(recieveMessageRoute, {
+        sender: currentChat._id,
+        recipient: data._id,
+        // recipient: currentChat._id,
+        // sender: "62e6737754b047e1094f8f7b",
+        // sender: "62e6738b54b047e1094f8f80",
+        // recipient: "62e6737754b047e1094f8f7b",
+      });
+
+      // from: data._id, to: currentChat._id,
+
+
+      console.log("########################################");
+
+      //TODO: response.data contains valid msg data, just need to set to messageState variable...
+      console.log(response.data);
+      setMessages({ ...messageState, messages: response.data });
+      setTimeout(() => console.log(messageState), 3000);
+
+    }
+  }, [messageState]);
 
   useEffect(() => {
     const getCurrentChat = async () => {
