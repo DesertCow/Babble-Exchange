@@ -84,7 +84,7 @@ function Login() {
 				<form className="welcome">
 
 					<div className="inputdiv">
-						<p className=" ">Username</p>
+						<p className="inputlabel">Username</p>
 						<div className="">
 							<input
 								className="startinputs"
@@ -98,7 +98,7 @@ function Login() {
 					</div>
 
 					<div className="inputdiv">
-						<p className=" ">Password</p>
+						<p className="inputlabel">Password</p>
 						<div className="text-center">
 							<input
 								className="startinputs"

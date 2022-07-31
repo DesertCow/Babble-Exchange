@@ -52,12 +52,12 @@ const Container = styled.div`
   display: grid;
   grid-template-rows: 10% 75% 15%;
   overflow: auto;
-  background-color: #ccdeed;
-  border-radius: 9px 0px 0px 9px;
+  background-color: white;
+  border-radius: 4px 0px 0px 4px;
   .brand {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0rem;
     justify-content: center;
     img {
       height: 2rem;
@@ -71,10 +71,10 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
 	overflow: auto;
-	padding: 7px;
+	padding: 0px;
 	width: 100%;
 	height: 85vh;
-    gap: 0.3rem;
+    gap: 0rem;
     &::-webkit-scrollbar {
       width: 0.3rem;
       &-thumb {
@@ -83,16 +83,16 @@ const Container = styled.div`
       }
     }
     .contact {
-      background-color: #b1c6de;
+      background-color: white;
       min-height: 4rem;
       cursor: pointer;
       width: 100%;
-	  border-radius: 4px;
       padding-left: 1.5rem;
       display: flex;
-      gap: 1rem;
       align-items: center;
-      transition: 0.2s ease-in-out;
+	  border-top: .7px solid #ededed;
+	  border-bottom: .7px solid #ededed;
+      transition: 0.1s ease-in-out;
       .avatar {
         img {
           height: 3rem;
@@ -100,17 +100,17 @@ const Container = styled.div`
       }
       .username {
         h3 {
-          color: white;
+          color: #2e2e2e;
+		  font-size: 15px;
+		  font-weight: 400;
         }
       }
     }
 	.contact:hover {
-		background-color: #9bbade;
-		border: 1px solid #68a6e3;
-		border-radius: 13px;
+		background-color: #f3f3f3;
 	}
     .selected {
-      background-color: #9a86f3;
+      background-color: #dedede;
     }
   }
 `;

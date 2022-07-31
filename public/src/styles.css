@@ -34,19 +34,20 @@ body::-webkit-scrollbar-thumb:hover {
 
 
 body {
-	background-color: rgb(244, 246, 249);
+	background-color: rgb(251, 251, 251);
 	font-family: 'Barlow', sans-serif;
 }
 
 .mid {
-	background-color: rgb(248, 251, 255);
+	background-color: white;
 	padding: 46px;
-	box-shadow: 0px 10px 30px rgba(102, 118, 169, 0.099);
-	border-radius: 16px;
-	-webkit-border-radius: 16px;
-	-moz-border-radius: 16px;
-	-ms-border-radius: 16px;
-	-o-border-radius: 16px;
+	/*box-shadow: 0px 10px 30px rgba(102, 118, 169, 0.099);*/
+	border: 1px solid #cccccc;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
 	margin: 50px 0px;
 }
 
@@ -60,17 +61,22 @@ body {
 	margin-top: 33px;
 }
 
+.inputlabel{
+	margin-bottom: 7px;
+	font-size: 14px;
+	color: #2f2f2f;
+}
 
 .startinputs {
 	width: 100%;
-	border: .5px solid rgb(169, 177, 255);
-	background: #fff;
-	padding: 10px;
-	border-radius: 4px;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	-ms-border-radius: 4px;
-	-o-border-radius: 4px;
+	border: 1px solid #cccccc;
+	background: rgb(251, 251, 251);
+	padding: 8px;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
 }
 
 .startbtns {
@@ -79,25 +85,34 @@ body {
 	font-weight: 600;
 	border: none;
 	margin: 12px;
-	width: 46%;
-	background-color: rgb(170, 181, 233);
-	border-radius: 22px;
-	-webkit-border-radius: 22px;
-	-moz-border-radius: 22px;
-	-ms-border-radius: 22px;
-	-o-border-radius: 22px;
-	box-shadow: 0px 2px 4px rgba(102, 118, 169, 0.338);
+	width: 77%;
+	background-color: rgb(156, 194, 236);
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
+}
 
+.startbtns:hover {
+
+	background-color: rgb(126, 178, 238);
 }
 
 .btndiv {
 	margin-top: 38px;
 }
 
+.m-3 {
+	font-size: 20px;
+	padding-top: 13px;
+}
+
 .chat {
 	background-color: rgb(248, 251, 255);
 	/*height: 500px;
-	*/box-shadow: 0px 10px 30px rgba(102, 118, 169, 0.099);
+	*/
+	box-shadow: 0px 10px 30px rgba(102, 118, 169, 0.099);
 	border-radius: 11px;
 	-webkit-border-radius: 11px;
 	-moz-border-radius: 11px;
@@ -114,7 +129,8 @@ body {
 	float: left;
 	background-color: #ecf1fa;
 	/*width: 30%;
-	*/height: 100%;
+	*/
+	height: 100%;
 	border-radius: 16px;
 	padding: 0 !important;
 }
@@ -143,7 +159,7 @@ body {
 .tab button.active {
 	background-color: rgb(248, 251, 255);
 	width: 100%;
-	
+
 }
 
 /* Style the tab content */
@@ -161,7 +177,7 @@ body {
 	/* background-color: aliceblue; */
 }
 
-.chatheader{
+.chatheader {
 	color: rgb(23, 23, 23);
 	font-size: 28px;
 	font-weight: 700;
@@ -183,13 +199,13 @@ body {
 
 .chatinput:focus {
 	background-color: rgb(34, 34, 34);
-		color: white;
-		transition: all .2s ease;
-		-webkit-transition: all .2s ease;
-		-moz-transition: all .2s ease;
-		-ms-transition: all .2s ease;
-		-o-transition: all .2s ease;
-	
+	color: white;
+	transition: all .2s ease;
+	-webkit-transition: all .2s ease;
+	-moz-transition: all .2s ease;
+	-ms-transition: all .2s ease;
+	-o-transition: all .2s ease;
+
 }
 
 .sendbtn {
