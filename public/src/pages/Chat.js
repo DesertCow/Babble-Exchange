@@ -86,14 +86,14 @@ const Container = styled.div`
   justify-content: center;
   gap: 1rem;
   align-items: center;
-  background-color: rgb(244, 246, 249);
+  background-color: rgb(251, 251, 251);
   	.container {
 	padding-left: 0 !important;
     height: 85vh;
-    width: 85vw;
-    background-color: rgb(248, 251, 255);
-	box-shadow: 0px 10px 27px rgba(102, 118, 169, 0.12);
-	border-radius: 9px;
+    width: 65vw;
+    background-color: white;
+	border-radius: 4px;
+	border: 1px solid #cccccc;
     display: grid;
     grid-template-columns: 25% 75%;
     @media screen and (min-width: 720px) and (max-width: 1080px) {
