@@ -3,6 +3,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 import styled from "styled-components";
+import loader from "../img/loading.gif";
+import { Buffer } from "buffer";
 
 import { allUsersRoute, host } from "../utils/apiRoutes";
 import ChatContainer from "../components/ChatContainer";
@@ -15,6 +17,7 @@ export default function Chat() {
 
 	const navigate = useNavigate();
 	const socket = useRef();
+	const [isLoading, setIsLoading] = useState(true);
 
 	const [contacts, setContacts] = useState([]);
 	const [currentChat, setCurrentChat] = useState(undefined);
@@ -50,6 +53,7 @@ export default function Chat() {
 		//const data = await axios.get(`${allUsersRoute}/62e35489eafe0dbc68a0898a`);
 		// console.log("DATA = " + data.data);
 		setContacts(data.data);
+		setIsLoading(false);
 		// }
 	}, []);
 
@@ -63,19 +67,24 @@ export default function Chat() {
 
 	return (
 		<>
-			<Container>
-				<div className="container">
-					<Contacts contacts={contacts} className="contacts" changeChat={handleChatChange} />
-					{currentChat === undefined ? (
-						<Welcome />
-					) : (
-						<ChatContainer currentChat={currentChat} socket={socket} />
-					)}
-				</div>
-			</Container>
-		</>
+			{isLoading ? (
+				<Container>
+					<img src={loader} alt="loader" className="loader" />
+				</Container>
+			) : (
+				<Container>
+					<div className="container">
+						<Contacts contacts={contacts} className="contacts" changeChat={handleChatChange} />
+						{currentChat === undefined ? (
+							<Welcome />
+						) : (
+							<ChatContainer currentChat={currentChat} socket={socket} />
+						)}
+					</div>
+				</Container>
+			)}
+			</>
 	);
-
 }
 
 const Container = styled.div`
