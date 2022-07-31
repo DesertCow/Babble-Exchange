@@ -7,7 +7,7 @@ module.exports.getMessages = async (req, res, next) => {
   console.log("\n\x1b[33mConversation Request \x1b[0m\n   From: \x1b[35m" + sender + "\x1b[0m \n   To  : \x1b[36m" + recipient + "\x1b[0m");
 
   const messages = await Messages.find({
-    users: {
+    recipient: {
       $all: [sender, recipient],
     },
   }).sort({ updatedAt: 1 });
@@ -35,7 +35,7 @@ module.exports.addMessage = async (req, res, next) => {
   console.log("\n\x1b[33mMessage Send Request \x1b[0m\n   From: \x1b[35m" + sender + "\x1b[0m \n   To  : \x1b[36m" + recipient + "\x1b[0m\n   Msg : \x1b[32m" + message + "\x1b[0m");
   const data = await Messages.create({
     message: { text: message },
-    users: [sender, recipient],
+    recipient: [sender, recipient],
     sender: sender,
   });
 

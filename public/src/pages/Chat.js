@@ -18,6 +18,7 @@ export default function Chat() {
 
 	const [contacts, setContacts] = useState([]);
 	const [currentChat, setCurrentChat] = useState(undefined);
+	const [currentChatz, setCurrentChatz] = useState(undefined);
 	const [currentUser, setCurrentUser] = useState(undefined);
 
 	useEffect(() => {
@@ -54,8 +55,10 @@ export default function Chat() {
 	}, []);
 
 	const handleChatChange = (chat) => {
-		console.log("Handle Chat Change!" + JSON.stringify(chat._id));
+		console.log("ChatID:" + JSON.stringify(chat._id));
+		console.log("CurrentChatBefore:" + JSON.stringify(currentChat));
 		setCurrentChat(chat);
+		console.log("CurrentChatAfter:" + JSON.stringify(currentChat));
 		// console.log("REAL CHAT? = " + chat.username);
 	};
 
