@@ -4,7 +4,8 @@
   "description": "<div align=\"center\"> <h1>Babbel Exchange</h1> <h4>Project 3: Interactive MERN Stack Single-Page Application</h4> </div>",
   "main": "server.js",
   "scripts": {
-    "start": "concurrently \"cd server && npm start\" \"cd public && npm start\"",
+    "start": "node ./server/server.js && cd public/ && npm run start-client",
+    "startAll": "concurrently \"cd server && npm start\" \"cd public && npm start\"",
     "build": "cd public/ && npm install && npm run build",
     "seed": "node seeds/seed.js",
     "watch": "nodemon server.js"
