@@ -18,7 +18,6 @@ export default function Chat() {
 
 	const [contacts, setContacts] = useState([]);
 	const [currentChat, setCurrentChat] = useState(undefined);
-	const [currentChatz, setCurrentChatz] = useState(undefined);
 	const [currentUser, setCurrentUser] = useState(undefined);
 
 	useEffect(() => {

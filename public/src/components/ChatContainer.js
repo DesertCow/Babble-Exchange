@@ -63,9 +63,9 @@ export default function ChatContainer({ currentChat, socket }) {
       message: msg,
     });
 
-    // const msgs = [...messages];
-    // msgs.push({ fromSelf: true, message: msg });
-    // setMessages({ ...messageState, messages: msgs });
+    const msgs = [...messageState];
+    msgs.push({ fromSelf: true, message: msg });
+    setMessages({ ...messageState, messages: msgs });
   };
 
   useEffect(() => {
@@ -87,7 +87,7 @@ export default function ChatContainer({ currentChat, socket }) {
   return (
     <Container>
       <h1>Hello World!</h1>
-      {/* {JSON.stringify(messageState.messages)} */}
+      {JSON.stringify(messageState.messages)}
     </Container>
   );
 
