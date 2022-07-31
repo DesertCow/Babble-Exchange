@@ -25,16 +25,20 @@ export default function ChatContainer({ currentChat, socket }) {
     const response = await axios.post(recieveMessageRoute, {
       sender: currentChat._id,
       //recipient: data._id,
-      // recipient: currentChat._id,
+      //recipient: currentChat._id,
       // sender: "62e6737754b047e1094f8f7b",
       // sender: "62e6738b54b047e1094f8f80",
       recipient: "62e6737754b047e1094f8f7b",
     });
     console.log("########################################");
+
+    //* VAILD Message Data HERE! Just need to set message state so i print msg in return
     console.log(response.data);
+
+    //TODO: BROKEN !!!
     setMessages({ ...messageState, messages: response.data });
     setTimeout(() => console.log(messageState), 3000)
-  }, []);
+  }, [currentChat]);
 
   useEffect(() => {
     const getCurrentChat = async () => {
@@ -87,8 +91,10 @@ export default function ChatContainer({ currentChat, socket }) {
 
   return (
     <Container>
+      <h1>Selected Chat: {currentChat.username}----[{currentChat._id}]--- {currentChat.email}</h1>
       <h1>Hello World!</h1>
-      {JSON.stringify(messageState.messages)}
+      {/* <h1>Msg:{messageState.messages}</h1> */}
+      {/* {JSON.stringify(messageState)} */}
     </Container>
   );
 

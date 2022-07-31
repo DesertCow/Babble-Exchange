@@ -17,17 +17,18 @@ export default function Chat() {
 	const socket = useRef();
 
 	const [contacts, setContacts] = useState([]);
-	const [currentChat, setCurrentChat] = useState(undefined);
+	const [currentChat, setCurrentChat] = useState([]);
 	const [currentUser, setCurrentUser] = useState(undefined);
 
 	useEffect(() => {
 		if (!localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
 			navigate("/login");
 		} else {
-			setCurrentUser(JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY))
-			);
+			setCurrentUser(JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)));
+			console.log(JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)));
 		}
 	}, []);
+
 	useEffect(() => {
 		if (currentUser) {
 			socket.current = io(host);
@@ -53,11 +54,11 @@ export default function Chat() {
 		// }
 	}, []);
 
-	const handleChatChange = (chat) => {
+	const handleChatChange = async (chat) => {
 		console.log("ChatID:" + JSON.stringify(chat._id));
-		console.log("CurrentChatBefore:" + JSON.stringify(currentChat));
-		setCurrentChat(chat);
-		console.log("CurrentChatAfter:" + JSON.stringify(currentChat));
+		await console.log("CurrentChatBefore:" + JSON.stringify(currentChat));
+		await setCurrentChat(chat);
+		await console.log("CurrentChatAfter:" + JSON.stringify(currentChat));
 		// console.log("REAL CHAT? = " + chat.username);
 	};
 
@@ -66,7 +67,7 @@ export default function Chat() {
 			<Container>
 				<div className="container">
 					<Contacts contacts={contacts} className="contacts" changeChat={handleChatChange} />
-					{currentChat === undefined ? (
+					{currentChat === '[]' ? (
 						<Welcome />
 					) : (
 						<ChatContainer currentChat={currentChat} socket={socket} />
