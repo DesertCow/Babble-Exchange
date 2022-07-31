@@ -17,7 +17,7 @@ export default function Chat() {
 	const socket = useRef();
 
 	const [contacts, setContacts] = useState([]);
-	const [currentChat, setCurrentChat] = useState(undefined);
+	const [currentChat, setCurrentChat] = useState([]);
 	const [currentUser, setCurrentUser] = useState(undefined);
 
 	useEffect(() => {
@@ -39,24 +39,21 @@ export default function Chat() {
 	useEffect(async () => {
 		// if (currentUser) {
 		console.log("API Route: " + allUsersRoute + "/" + JSON.stringify(currentUser));
+
+		// TODO: Fix Temp Workaround, should use currentUser._id for ID..
 		let finalApiRoute = `${allUsersRoute}/62e2dd730d5d64d0c8d9d0de`;
 		let tempID = JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY))._id;
-		console.log("TempID " + tempID)
-		console.log(`${allUsersRoute}/${tempID}`)
-		//const data = axios.get(`${allUsersRoute}/${currentUser._id}`);
+		// console.log("TempID " + tempID)
+		// console.log(`${allUsersRoute}/${tempID}`)
 		const data = await axios.get(`${allUsersRoute}/${tempID}`);
-		//const data = axios.get(`${finalApiRoute}`);
-		// const data = await axios.get(`http://localhost:3001/api/auth/allusers/62e35489eafe0dbc68a0898a`);
-		//const data = await axios.get(`${allUsersRoute}/62e35489eafe0dbc68a0898a`);
-		// console.log("DATA = " + data.data);
 		setContacts(data.data);
 		// }
 	}, []);
 
-	const handleChatChange = (chat) => {
-		console.log("ChatID:" + JSON.stringify(chat._id));
-		console.log("CurrentChatBefore:" + JSON.stringify(currentChat));
-		setCurrentChat(chat);
+	const handleChatChange = async (chat) => {
+		await console.log("ChatID:" + JSON.stringify(chat._id));
+		await console.log("CurrentChatBefore:" + JSON.stringify(currentChat));
+		await setCurrentChat(chat);
 		console.log("CurrentChatAfter:" + JSON.stringify(currentChat));
 		// console.log("REAL CHAT? = " + chat.username);
 	};
