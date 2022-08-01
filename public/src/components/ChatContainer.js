@@ -206,19 +206,20 @@ const Container = styled.div`
         }
       }
     }
-    .sended {
-      justify-content: flex-start;
-      .content {
-		color: white;
-        background-color: #737373;
-      }
-    }
     .recieved {
       justify-content: flex-end;
       .content {
-		color: #5b92d9;
+		  color: white;
+      background-color: #5b92d9;
+      }
+    }
+    
+    .sended {
+      justify-content: flex-start;
+      .content {
+		color: #828282;
         background-color: white;
-		border: 1px solid #828282;
+		border: 1px solid #737373;
       }
     }
   }
