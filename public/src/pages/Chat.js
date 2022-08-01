@@ -41,7 +41,7 @@ export default function Chat() {
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	useEffect(async () => {
 		// if (currentUser) {
-		console.log("API Route: " + allUsersRoute + "/" + JSON.stringify(currentUser));
+		//console.log("API Route: " + allUsersRoute + "/" + JSON.stringify(currentUser));
 
 		// TODO: Fix Temp Workaround, should use currentUser._id for ID..
 		let finalApiRoute = `${allUsersRoute}/62e2dd730d5d64d0c8d9d0de`;
@@ -55,10 +55,10 @@ export default function Chat() {
 	}, []);
 
 	const handleChatChange = async (chat) => {
-		await console.log("ChatID:" + JSON.stringify(chat._id));
-		await console.log("CurrentChatBefore:" + JSON.stringify(currentChat));
+		//await console.log("ChatID:" + JSON.stringify(chat._id));
+		//await console.log("CurrentChatBefore:" + JSON.stringify(currentChat));
 		await setCurrentChat(chat);
-		console.log("CurrentChatAfter:" + JSON.stringify(currentChat));
+		//console.log("CurrentChatAfter:" + JSON.stringify(currentChat));
 		// console.log("REAL CHAT? = " + chat.username);
 	};
 
@@ -80,7 +80,7 @@ export default function Chat() {
 					</div>
 				</Container>
 			)}
-			</>
+		</>
 	);
 }
 

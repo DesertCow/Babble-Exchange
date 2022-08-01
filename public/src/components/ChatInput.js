@@ -4,8 +4,11 @@ import styled from "styled-components";
 import { BsEmojiSmileFill } from "react-icons/bs";
 import Picker from "emoji-picker-react";
 
-export default function ChatInput({ handleSendMsg })  {
-  const {msg, setMsg} = useState("")
+export default function ChatInput({ handleSendMsg }) {
+
+  // const { msg, setMsg } = useState("")
+  const [msg, setMsg] = useState({ messages: [] });
+
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const handleEmojiPickerhideShow = () => {
     setShowEmojiPicker(!showEmojiPicker);
@@ -19,6 +22,11 @@ export default function ChatInput({ handleSendMsg })  {
 
   const sendChat = (event) => {
     event.preventDefault();
+
+    console.log("MSG = " + msg)
+    console.log("MSG Length = " + msg.length)
+
+    console.log("SEND BUTTON!");
     if (msg.length > 0) {
       handleSendMsg(msg);
       setMsg("");
