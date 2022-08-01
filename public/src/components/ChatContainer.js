@@ -110,14 +110,12 @@ export default function ChatContainer({ currentChat, socket }) {
       {/* <h1>Selected Chat: {currentChat.username}----[{currentChat._id}]--- {currentChat.email}</h1>
       <h1>Hello World!</h1>
       {JSON.stringify(messageState.messages)} */}
-      <div className="chat-header justify-content-end">
+      <div className="chat-header d-flex justify-content-between">
+        <div className="username">
+          <h3>{currentChat.username}</h3>
+        </div>
         <div className="user-details">
-          <div className="username">
-            <h3>{currentChat.username}</h3>
-          </div>
-          <div>
-            <Logout />
-          </div>
+          <Logout />
         </div>
       </div>
       <div className="chat-messages">
@@ -203,13 +201,13 @@ const Container = styled.div`
       }
     }
     .sended {
-      justify-content: flex-end;
+      justify-content: flex-start;
       .content {
         background-color: #e3e3e3;
       }
     }
     .recieved {
-      justify-content: flex-start;
+      justify-content: flex-end;
       .content {
         background-color: white;
       }
