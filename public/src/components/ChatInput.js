@@ -33,13 +33,12 @@ export default function ChatInput({ handleSendMsg }) {
     }
   };
 
+
+  //* Overides default value to blank
   if (msg == "[object Object]") {
-    console.log("TEST---1");
-    setMsg("type your message here");
+    // console.log("TEST---1");
+    setMsg("");
   }
-  // } else {
-  //   console.log("TEST---2");
-  // }
 
   return (
     <Container>
