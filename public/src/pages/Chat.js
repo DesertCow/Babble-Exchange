@@ -16,6 +16,7 @@ import Welcome from "../components/Welcome";
 export default function Chat() {
 
 	const navigate = useNavigate();
+	// const socket = useRef();
 	const socket = useRef();
 	const [isLoading, setIsLoading] = useState(true);
 
@@ -31,6 +32,7 @@ export default function Chat() {
 			);
 		}
 	}, []);
+
 	useEffect(() => {
 		if (currentUser) {
 			socket.current = io(host);

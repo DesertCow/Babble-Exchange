@@ -12,7 +12,7 @@ export default function ChatContainer({ currentChat, socket }) {
 
   const [messageState, setMessages] = useState({ messages: [] });
   const [msgTime, setMSGTime] = useState(null);
-  // const scrollRef = useRef();
+  const scrollRef = useRef();
   const [arrivalMessage, setArrivalMessage] = useState(null);
 
 
@@ -82,9 +82,9 @@ export default function ChatContainer({ currentChat, socket }) {
     arrivalMessage && setMessages((prev) => [...prev, arrivalMessage]);
   }, [arrivalMessage]);
 
-  // useEffect(() => {
-  //   scrollRef.current?.scrollIntoView({ behavior: "smooth" });
-  // }, [messages]);
+  useEffect(() => {
+    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messageState]);
 
   return (
     <Container>
@@ -103,7 +103,7 @@ export default function ChatContainer({ currentChat, socket }) {
         {messageState.messages.map((message) => {
           return (
             // <div ref={scrollRef} key={uuidv4()}>
-            <div key={uuidv4()}>
+            <div ref={scrollRef} key={uuidv4()}>
               <div
                 className={`message ${message.fromSelf ? "sended" : "recieved"
                   }`}
