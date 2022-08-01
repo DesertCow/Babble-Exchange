@@ -16,6 +16,7 @@ import Welcome from "../components/Welcome";
 export default function Chat() {
 
 	const navigate = useNavigate();
+	// const socket = useRef();
 	const socket = useRef();
 	const [isLoading, setIsLoading] = useState(true);
 
@@ -31,6 +32,7 @@ export default function Chat() {
 			);
 		}
 	}, []);
+
 	useEffect(() => {
 		if (currentUser) {
 			socket.current = io(host);
@@ -38,28 +40,29 @@ export default function Chat() {
 		}
 	}, [currentUser]);
 
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	useEffect(async () => {
-		// if (currentUser) {
-		//console.log("API Route: " + allUsersRoute + "/" + JSON.stringify(currentUser));
+	useEffect(() => {
 
-		// TODO: Fix Temp Workaround, should use currentUser._id for ID..
-		let finalApiRoute = `${allUsersRoute}/62e2dd730d5d64d0c8d9d0de`;
-		let tempID = JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY))._id;
-		// console.log("TempID " + tempID)
-		// console.log(`${allUsersRoute}/${tempID}`)
-		const data = await axios.get(`${allUsersRoute}/${tempID}`);
-		setContacts(data.data);
-		setIsLoading(false);
-		// }
-	}, []);
+		async function fetchContactData() {
+
+			// TODO: Fix Temp Workaround, should use currentUser._id for ID..
+			let finalApiRoute = `${allUsersRoute}/62e2dd730d5d64d0c8d9d0de`;
+			let tempID = JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY))._id;
+			// console.log("TempID " + tempID)
+			// console.log(`${allUsersRoute}/${tempID}`)
+			const data = await axios.get(`${allUsersRoute}/${tempID}`);
+			setContacts(data.data);
+			setIsLoading(false);
+
+			// if (currentUser) {
+			//console.log("API Route: " + allUsersRoute + "/" + JSON.stringify(currentUser));
+
+		}
+		fetchContactData();
+	}, [contacts]);
 
 	const handleChatChange = async (chat) => {
-		//await console.log("ChatID:" + JSON.stringify(chat._id));
-		//await console.log("CurrentChatBefore:" + JSON.stringify(currentChat));
+
 		await setCurrentChat(chat);
-		//console.log("CurrentChatAfter:" + JSON.stringify(currentChat));
-		// console.log("REAL CHAT? = " + chat.username);
 	};
 
 	return (

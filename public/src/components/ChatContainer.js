@@ -11,7 +11,8 @@ import { sendMessageRoute, recieveMessageRoute } from "../utils/apiRoutes";
 export default function ChatContainer({ currentChat, socket }) {
 
   const [messageState, setMessages] = useState({ messages: [] });
-  // const scrollRef = useRef();
+  const [msgTime, setMSGTime] = useState(null);
+  const scrollRef = useRef();
   const [arrivalMessage, setArrivalMessage] = useState(null);
 
 
@@ -21,26 +22,12 @@ export default function ChatContainer({ currentChat, socket }) {
 
       const data = await JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY));
 
-      //console.log("Sender:" + JSON.stringify(currentChat._id));
-      //console.log("Reciver:" + JSON.stringify(data._id));
       const response = await axios.post(recieveMessageRoute, {
         sender: currentChat._id,
         recipient: data._id,
-        // recipient: currentChat._id,
-        // sender: "62e6737754b047e1094f8f7b",
-        // sender: "62e6738b54b047e1094f8f80",
-        // recipient: "62e6737754b047e1094f8f7b",
       });
 
-      // from: data._id, to: currentChat._id,
-
-
-      //console.log("########################################");
-
-      //TODO: response.data contains valid msg data, just need to set to messageState variable...
-      // console.log(response.data);
       setMessages({ ...messageState, messages: response.data });
-      //setTimeout(() => console.log(messageState), 3000);
 
     }
     fetchLocalData();
@@ -57,11 +44,13 @@ export default function ChatContainer({ currentChat, socket }) {
     getCurrentChat();
   }, [currentChat]);
 
-
   const handleSendMsg = async (msg) => {
-    const data = await JSON.parse(
-      localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
-    );
+
+
+    let currentTime = new Date();
+    setMSGTime(currentTime.toLocaleTimeString());
+
+    const data = await JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY));
     socket.current.emit("send-msg", {
       recipient: currentChat._id,
       sender: data._id,
@@ -72,6 +61,8 @@ export default function ChatContainer({ currentChat, socket }) {
       recipient: currentChat._id,
       message: msg,
     });
+
+
 
     // const msgs = [...messageState];
     // console.log(JSON.stringify(messageState));
@@ -91,9 +82,9 @@ export default function ChatContainer({ currentChat, socket }) {
     arrivalMessage && setMessages((prev) => [...prev, arrivalMessage]);
   }, [arrivalMessage]);
 
-  // useEffect(() => {
-  //   scrollRef.current?.scrollIntoView({ behavior: "smooth" });
-  // }, [messages]);
+  useEffect(() => {
+    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messageState]);
 
   return (
     <Container>
@@ -112,14 +103,14 @@ export default function ChatContainer({ currentChat, socket }) {
         {messageState.messages.map((message) => {
           return (
             // <div ref={scrollRef} key={uuidv4()}>
-            <div key={uuidv4()}>
+            <div ref={scrollRef} key={uuidv4()}>
               <div
                 className={`message ${message.fromSelf ? "sended" : "recieved"
                   }`}
               >
                 <div className="content ">
                   <p>{message.message}</p>
-                  <h1>Time Stamp: Add Me!</h1>
+                  <h1>Time Stamp: {msgTime}</h1>
                 </div>
               </div>
             </div>

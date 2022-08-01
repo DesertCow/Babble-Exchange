@@ -9,9 +9,10 @@ const path = require('path');
 require('dotenv').config();
 
 
-app.use(cors());
+app.use(cors({ origin: process.env.CurrentHost }));
 app.use(express.json());
 
+console.log("CORS = " + process.env.MONGO_URL)
 
 mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
@@ -45,16 +46,30 @@ const server = app.listen(process.env.PORT || 3001, () => {
 
 const io = socket(server, {
   cors: {
-    origin: "http://localhost:3000",
+    // origin: "http://localhost:3000",
+    origin: process.env.CurrentHost,
     credentials: true,
   },
 });
 
-global.onlineUsers = new Map();
+// global.onlineUsers = new Map();
+const onlineUsers = new Map()
+let socketCount = 0;
+
 io.on("connection", (socket) => {
+
+  console.log("New Socket Connection: " + socket.id);
   global.chatSocket = socket;
+
   socket.on("add-user", (userId) => {
     onlineUsers.set(userId, socket.id);
+    socketCount++;
+  });
+
+  socket.on('disconnect', (data) => {
+    console.log(`${socket.id} disconnected`);
+    onlineUsers.delete(socket.id) // delete socket from Map object
+    socketCount--;
   });
 
   socket.on("send-msg", (data) => {
@@ -63,4 +78,7 @@ io.on("connection", (socket) => {
       socket.to(sendUserSocket).emit("msg-recieve", data.msg);
     }
   });
+
+  console.log("Socket Count = " + socketCount);
+
 });
