@@ -128,7 +128,7 @@ export default function ChatContainer({ currentChat, socket }) {
               >
                 <div className="content ">
                   <p>{message.message}</p>
-                  <h5>Time Stamp: {msgTime}</h5>
+                  {/* <h5>Time Stamp: {msgTime}</h5> */}
                 </div>
               </div>
             </div>
