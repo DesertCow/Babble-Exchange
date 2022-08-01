@@ -95,6 +95,7 @@ const Container = styled.div`
   background-color: rgb(251, 251, 251);
   	.container {
 	padding-left: 0 !important;
+	padding-right: 0 !important;
     height: 85vh;
     width: 65vw;
     background-color: white;
