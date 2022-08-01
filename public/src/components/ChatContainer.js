@@ -143,8 +143,10 @@ export default function ChatContainer({ currentChat, socket }) {
 
 const Container = styled.div`
   display: grid;
-  grid-template-rows: 10% 76% 14%;
+  grid-template-rows: 9% 77% 14%;
+  border-radius: 0px 7px 7px 0px;
   gap: 0.1rem;
+  background-color: rgb(255,255,255);
   overflow: hidden;
   @media screen and (min-width: 720px) and (max-width: 1080px) {
     grid-template-rows: 15% 70% 15%;
@@ -154,6 +156,7 @@ const Container = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 0 2rem;
+	border-bottom: .8px solid #b8b8b8;
     .user-details {
       display: flex;
       align-items: center;
@@ -167,7 +170,10 @@ const Container = styled.div`
         h3 {
           color: #474747;
 		  font-size: 22px;
+		  font-weight: 600;
         }
+		
+		
       }
     }
   }
@@ -203,13 +209,15 @@ const Container = styled.div`
     .sended {
       justify-content: flex-end;
       .content {
-        background-color: #e3e3e3;
+        background-color: #f5f5f5;
+		border: 1px solid #b0b0b0;
       }
     }
     .recieved {
       justify-content: flex-start;
       .content {
         background-color: white;
+		border: 1px solid #b0b0b0;
       }
     }
   }

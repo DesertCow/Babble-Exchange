@@ -34,25 +34,52 @@ body::-webkit-scrollbar-thumb:hover {
 
 
 body {
-	background-color: rgb(251, 251, 251);
+	background-color: rgba(249,
+		252,
+		252);
 	font-family: 'Barlow', sans-serif;
 }
 
+.logodiv{
+	margin-bottom: 26px;
+}
+
+.logo {
+	margin-top: 33px;
+	width: 230px;
+}
+
 .mid {
-	background-color: white;
+	background-color: rgb(255, 255, 255);
 	padding: 46px;
-	/*box-shadow: 0px 10px 30px rgba(102, 118, 169, 0.099);*/
-	border: 1px solid #cccccc;
-	border-radius: 4px;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	-ms-border-radius: 4px;
-	-o-border-radius: 4px;
-	margin: 50px 0px;
+	box-shadow: 0px 8px 30px rgba(169, 195, 206, 0.274);
+	border: .8px solid #b7c8cf6f;
+	border-radius: 7px;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	-ms-border-radius: 7px;
+	-o-border-radius: 7px;
+	margin: 33px 0px;
+}
+
+.welcometo{
+	font-size: 20px;
+	font-weight: 500;
+	padding-bottom: 8px;
+	color: #545454;
+}
+
+.head {
+	font-family: 'Bungee', cursive;
+	font-size: 62px;
+	line-height: 61px;
+	-webkit-text-fill-color: rgba(235, 246, 255, 0.341);
+	-webkit-text-stroke: 2.7px rgb(41, 71, 105);
+	margin-bottom: 52px;
 }
 
 .startheader {
-	margin-bottom: 44px;
+	margin-bottom: 54px;
 	font-weight: 600;
 	font-size: 33px;
 }
@@ -61,7 +88,7 @@ body {
 	margin-top: 33px;
 }
 
-.inputlabel{
+.inputlabel {
 	margin-bottom: 7px;
 	font-size: 14px;
 	color: #2f2f2f;
@@ -80,23 +107,27 @@ body {
 }
 
 .startbtns {
-	padding: 11px 26px;
+	padding: 12px 26px;
 	color: white;
 	font-weight: 600;
 	border: none;
 	margin: 12px;
-	width: 77%;
-	background-color: rgb(156, 194, 236);
-	border-radius: 4px;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	-ms-border-radius: 4px;
-	-o-border-radius: 4px;
+	width: 57%;
+	background-color: rgb(126, 178, 238);
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
 }
 
 .startbtns:hover {
-
-	background-color: rgb(126, 178, 238);
+	transition: 0.2s;
+	background-color: rgb(156, 194, 236);
+	-webkit-transition: 0.2s;
+	-moz-transition: 0.2s;
+	-ms-transition: 0.2s;
+	-o-transition: 0.2s;
 }
 
 .btndiv {

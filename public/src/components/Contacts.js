@@ -55,8 +55,9 @@ const Container = styled.div`
   display: grid;
   grid-template-rows: 10% 75% 15%;
   overflow: auto;
-  background-color: white;
-  border-radius: 4px 0px 0px 4px;
+  background-color: #c2d1d1;
+  border-radius: 7px 0px 0px 7px;
+  padding-right:1px;
   .brand {
     display: flex;
     align-items: center;
@@ -64,20 +65,22 @@ const Container = styled.div`
     justify-content: center;
     img {
       height: 2rem;
-    }
+    	}
     h3 {
       color: white;
       text-transform: uppercase;
-    }
+    	}
   }
+
   .contacts {
     display: flex;
     flex-direction: column;
 	overflow: auto;
 	padding: 0px;
 	width: 100%;
+	margin: 5px;
 	height: 85vh;
-    gap: 0rem;
+    gap: .2rem;
     &::-webkit-scrollbar {
       width: 0.2rem;
       &-thumb {
@@ -86,37 +89,74 @@ const Container = styled.div`
       }
     }
     .contact {
-      background-color: white;
-      min-height: 4rem;
-      cursor: pointer;
-      width: 100%;
-      padding-left: 1.5rem;
-      display: flex;
-      align-items: center;
-	  border-top: .7px solid #ededed;
-	  border-bottom: .7px solid #ededed;
-      transition: 0.1s ease-in-out;
-      .avatar {
-        img {
-          height: 3rem;
-        }
-      }
+  		background-color: #f0fafa;
+		min-height: 3.5rem;
+		cursor: pointer;
+		width: 100%;
+		padding-left: 1.2rem;
+		display: flex;
+		align-items: center;
+		border-radius: 4px;
+		border-top: .7px solid #ededed;
+		border-bottom: .7px solid #ededed;
+		transition: 0.2s ease-in-out;
+		.avatar {
+			img {
+			height: 3rem;
+			}
+      	}
       .username {
-        h3 {
-          color: #2e2e2e;
-		  font-size: 15px;
-		  font-weight: 400;
-        }
-      }
+			h3 {
+			color: #545454;
+			font-size: 15px;
+			font-weight: 500;
+			transition: 0.2s ease-in-out;
+			}
+     	}
     }
 	.contact:hover {
-		background-color: #f3f3f3;
+		background-color: rgba(221, 232, 251);
+		border: .7px solid #7f98a3;
+		border-radius: 9px;
+		box-shadow: 0px 1px 3px rgba(169, 195, 206, .7);
+		.username {
+			h3 {
+			color: #2e2e2e;
+			font-size: 16px;
+			font-weight: 600;
+			}
+     	}
 	}
 	.contact:active {
-		background-color: #dedede;
+		background-color: #fcffff;
+		border: .7px solid #7f98a3;
+		box-shadow: 0px 1px 2px rgba(169, 195, 206, 1);
+		border-radius: 9px;
+		.username {
+			h3 {
+			color: #2e2e2e;
+			font-size: 16px;
+			font-weight: 600;
+			}
+     	}
+
+
 	}
     .selected {
-      background-color: #dedede;
+        background-color: #fcffff;
+		border: .7px solid #7f98a3;
+		box-shadow: 0px 1px 2px rgba(169, 195, 206, 1);
+		border-radius: 9px;
+		.username {
+			h3 {
+			color: #2e2e2e;
+			font-size: 16px;
+			font-weight: 600;
+			}
+     	}
+
+
+
     }
   }
 `;

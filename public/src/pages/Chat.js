@@ -73,6 +73,14 @@ export default function Chat() {
 				</Container>
 			) : (
 				<Container>
+					<div className="row">
+					<div className="col-12 text-center logodiv">
+						<img src={require("../img/babble_logo.png")}
+							className="logo"
+							alt="babble logo" />
+					</div>
+					</div>
+
 					<div className="container">
 						<Contacts contacts={contacts} className="contacts" changeChat={handleChatChange} />
 						{currentChat === undefined ? (
@@ -88,23 +96,26 @@ export default function Chat() {
 }
 
 const Container = styled.div`
-  height: 100vh;
   width: 100vw;
+  
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 1rem;
+  
   align-items: center;
-  background-color: rgb(251, 251, 251);
-  	.container {
+  background-color: rgb(249, 252, 252);
+  .container {
 	padding-left: 0 !important;
 	padding-right: 0 !important;
     height: 85vh;
     width: 65vw;
+	border: .8px solid #b7c8cf6f;
+	margin-bottom: 88px;
     background-color: white;
-	border-radius: 4px;
-	border: 1px solid #cccccc;
+	border-radius: 7px;
     display: grid;
+	box-shadow: 0px 10px 30px rgba(102, 118, 169, 0.099);
     grid-template-columns: 25% 75%;
     @media screen and (min-width: 720px) and (max-width: 1080px) {
       grid-template-columns: 35% 65%;
