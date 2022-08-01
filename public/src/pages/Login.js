@@ -33,14 +33,23 @@ function Login() {
 		setValues({ ...values, [event.target.name]: event.target.value });
 	};
 
+	const validateForm = () => {
+		const { username, password } = values;
+		if (username === "" && password === "") {
+			toast.error("Username and Password is required.", toastOptions);
+			return false;
+		} else if (username === "") {
+			toast.error("Username is required.", toastOptions);
+			return false;
+		} else if (password === "") {
+			toast.error("Password is required.", toastOptions);
+		return true;
+		}
+	};
+
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-
-		console.log("EVENT SUBMIT!" + event);
-
-		// TODO: Add validateForm() method
-		// if (validateForm()) {
-		if (true) {
+		if (validateForm()) {
 			const { username, password } = values;
 			const { data } = await axios.post(loginRoute, {
 				username,
@@ -66,7 +75,7 @@ function Login() {
 		// navigate("/Register");
 		event.preventDefault();
 
-		console.log("Signup Event: " + event);
+		// console.log("Signup Event: " + event);
 
 		navigate("/Register");
 
@@ -129,10 +138,5 @@ function Login() {
 
 	);
 }
-
-
-
-
-
 
 export default Login;

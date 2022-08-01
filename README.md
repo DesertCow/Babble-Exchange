@@ -1,5 +1,5 @@
 <div align="center">
-<h1>Babbel Exchange</h1>
+<h1>Babble Exchange</h1>
 <h4>Project 3: Interactive MERN Stack Single-Page Application</h4>
 </div>
   
@@ -39,7 +39,7 @@
 
 ## [ElevatorPitch](#table-of-contents)
 ----
-Instant message applicaiton that allow you to easily stay connected with freinds and family while on the go or at home. Babbel-Exchange is interactive and responsive single page applicaiton (SPA) that utilizes MongoDB, Express, React, and NodeJS (MERN Stack).
+Instant message applicaiton that allow you to easily stay connected with freinds and family while on the go or at home. Babble-Exchange is interactive and responsive single page applicaiton (SPA) that utilizes MongoDB, Express, React, and NodeJS (MERN Stack).
 <br>
 <br>
 

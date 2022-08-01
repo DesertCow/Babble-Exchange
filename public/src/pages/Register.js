@@ -25,12 +25,35 @@ function Register() {
 		setValues({ ...values, [event.target.name]: event.target.value });
 	};
 
+	const validateSignUp = () => {
+		const { password, confirmPassword, username, email } = values;
+		if (password !== confirmPassword) {
+			toast.error(
+				"Password and confirm password should be same.",
+				toastOptions
+			);
+		} if (username.length < 3) {
+			toast.error(
+				"Username should be greater than 3 characters.",
+				toastOptions
+			);
+		} if (password.length < 8) {
+			toast.error(
+				"Password should be equal or greater than 8 characters.",
+				toastOptions
+			);
+		} if (email === "") {
+			toast.error("Email is required.", toastOptions);
+			return false;
+		}
+
+		return true;
+	};
+
 	const handleSignUp = async (event) => {
 		event.preventDefault();
-
 		// TODO: Add validateForm() method
-		if (true) {
-
+		if (validateSignUp()) {
 			const { email, username, password, passwordconfirm } = values;
 
 			// console.log("User Data: " + email + "||" + username + "||" + password + "||" + passwordconfirm);
@@ -48,11 +71,9 @@ function Register() {
 				toast.success("Account Sign-Up Successful", toastOptions);
 				navigate("/");
 			}
-
-
 		}
-	};
-
+	}
+	
 	return (
 
 		<div className="row d-flex align-items-center justify-content-center">
