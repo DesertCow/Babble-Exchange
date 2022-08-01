@@ -14,46 +14,54 @@ export default function ChatInput({ handleSendMsg }) {
     setShowEmojiPicker(!showEmojiPicker);
   };
 
-	const handleEmojiClick = (event, emojiObject) => {
-		let message = msg;
-		message += emojiObject.emoji;
-		setMsg(message);
-	};
+  const handleEmojiClick = (event, emojiObject) => {
+    let message = msg;
+    message += emojiObject.emoji;
+    setMsg(message);
+  };
 
   const sendChat = (event) => {
     event.preventDefault();
 
-    console.log("MSG = " + msg)
-    console.log("MSG Length = " + msg.length)
+    // console.log("MSG = " + msg)
+    // console.log("MSG Length = " + msg.length)
 
-    console.log("SEND BUTTON!");
+    // console.log("SEND BUTTON!");
     if (msg.length > 0) {
       handleSendMsg(msg);
       setMsg("");
     }
   };
 
-	return (
-		<Container>
-			<div className="button-container">
-				<div className="emoji">
-					<BsEmojiSmileFill onClick={handleEmojiPickerhideShow} />
-					{showEmojiPicker && <Picker onEmojiClick={handleEmojiClick} />}
-				</div>
-			</div>
-			<form className="input-container" onSubmit={(event) => sendChat(event)}>
-				<input
-					type="text"
-					placeholder="type your message here"
-					onChange={(e) => setMsg(e.target.value)}
-					value={msg}
-				/>
-				<button type="submit">
-					<IoMdSend />
-				</button>
-			</form>
-		</Container>
-	);
+  if (msg == "[object Object]") {
+    console.log("TEST---1");
+    setMsg("type your message here");
+  }
+  // } else {
+  //   console.log("TEST---2");
+  // }
+
+  return (
+    <Container>
+      <div className="button-container">
+        <div className="emoji">
+          <BsEmojiSmileFill onClick={handleEmojiPickerhideShow} />
+          {showEmojiPicker && <Picker onEmojiClick={handleEmojiClick} />}
+        </div>
+      </div>
+      <form className="input-container" onSubmit={(event) => sendChat(event)}>
+        <input
+          type="text"
+          placeholder="type your message here"
+          onChange={(e) => setMsg(e.target.value)}
+          value={msg}
+        />
+        <button type="submit">
+          <IoMdSend />
+        </button>
+      </form>
+    </Container>
+  );
 }
 
 const Container = styled.div`
