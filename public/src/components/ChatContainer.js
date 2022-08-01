@@ -21,8 +21,8 @@ export default function ChatContainer({ currentChat, socket }) {
 
       const data = await JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY));
 
-      console.log("Sender:" + JSON.stringify(currentChat._id));
-      console.log("Reciver:" + JSON.stringify(data._id));
+      //console.log("Sender:" + JSON.stringify(currentChat._id));
+      //console.log("Reciver:" + JSON.stringify(data._id));
       const response = await axios.post(recieveMessageRoute, {
         sender: currentChat._id,
         recipient: data._id,
@@ -35,12 +35,12 @@ export default function ChatContainer({ currentChat, socket }) {
       // from: data._id, to: currentChat._id,
 
 
-      console.log("########################################");
+      //console.log("########################################");
 
       //TODO: response.data contains valid msg data, just need to set to messageState variable...
-      console.log(response.data);
+      // console.log(response.data);
       setMessages({ ...messageState, messages: response.data });
-      setTimeout(() => console.log(messageState), 3000);
+      //setTimeout(() => console.log(messageState), 3000);
 
     }
     fetchLocalData();
@@ -119,6 +119,7 @@ export default function ChatContainer({ currentChat, socket }) {
               >
                 <div className="content ">
                   <p>{message.message}</p>
+                  <h1>Time Stamp: Add Me!</h1>
                 </div>
               </div>
             </div>

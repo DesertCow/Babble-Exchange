@@ -37,7 +37,7 @@ function Login() {
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 
-		console.log("EVENT SUBMIT!" + event);
+		// console.log("EVENT SUBMIT!" + event);
 
 		// TODO: Add validateForm() method
 		// if (validateForm()) {
@@ -67,7 +67,7 @@ function Login() {
 		// navigate("/Register");
 		event.preventDefault();
 
-		console.log("Signup Event: " + event);
+		// console.log("Signup Event: " + event);
 
 		navigate("/Register");
 
