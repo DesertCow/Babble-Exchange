@@ -190,24 +190,25 @@ const Container = styled.div`
         padding: 1rem;
         font-size: 1.1rem;
         border-radius: 1rem;
-        color: #737373;
+        
         @media screen and (min-width: 720px) and (max-width: 1080px) {
           max-width: 70%;
         }
       }
     }
     .sended {
-      justify-content: flex-end;
+      justify-content: flex-start;
       .content {
-        background-color: #f5f5f5;
-		border: 1px solid #b0b0b0;
+		color: white;
+        background-color: #5b92d9;
       }
     }
     .recieved {
-      justify-content: flex-start;
+      justify-content: flex-end;
       .content {
+		color: #737373;
         background-color: white;
-		border: 1px solid #b0b0b0;
+		border: 1px solid #828282;
       }
     }
   }
