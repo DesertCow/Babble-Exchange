@@ -34,10 +34,8 @@ body::-webkit-scrollbar-thumb:hover {
 
 
 body {
-	background-color: rgba(249,
-		252,
-		252);
-	font-family: 'Barlow', sans-serif;
+	background-color: rgb(251, 251, 251);
+	font-family: 'Rubik Mono One', sans-serif;
 }
 
 .logodiv{
@@ -104,6 +102,7 @@ body {
 	-moz-border-radius: 3px;
 	-ms-border-radius: 3px;
 	-o-border-radius: 3px;
+	font-family: monospace;
 }
 
 .startbtns {
