@@ -76,9 +76,9 @@ const Container = styled.div`
 	height: 85vh;
     gap: 0rem;
     &::-webkit-scrollbar {
-      width: 0.3rem;
+      width: 0.2rem;
       &-thumb {
-        background-color: #7cb2de;
+        background-color: #c3c3c3;
         border-radius: 1rem;
       }
     }
@@ -108,6 +108,9 @@ const Container = styled.div`
     }
 	.contact:hover {
 		background-color: #f3f3f3;
+	}
+	.contact:active {
+		background-color: #dedede;
 	}
     .selected {
       background-color: #dedede;
