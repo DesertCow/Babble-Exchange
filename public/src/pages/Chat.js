@@ -58,7 +58,7 @@ export default function Chat() {
 
 		}
 		fetchContactData();
-	}, [contacts]);
+	}, [currentUser]);
 
 	const handleChatChange = async (chat) => {
 
