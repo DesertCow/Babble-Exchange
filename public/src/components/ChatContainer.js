@@ -207,14 +207,14 @@ const Container = styled.div`
       }
     }
     .sended {
-      justify-content: flex-end;
+      justify-content: flex-start;
       .content {
 		color: white;
         background-color: #5b92d9;
       }
     }
     .recieved {
-      justify-content: flex-start;
+      justify-content: flex-end;
       .content {
 		color: #737373;
         background-color: white;
