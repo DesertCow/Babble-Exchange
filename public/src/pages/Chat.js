@@ -74,11 +74,11 @@ export default function Chat() {
 			) : (
 				<Container>
 					<div className="row">
-					<div className="col-12 text-center logodiv">
-						<img src={require("../img/babble_logo.png")}
-							className="logo"
-							alt="babble logo" />
-					</div>
+						<div className="col-12 text-center logodiv">
+							<img src={require("../img/babble_logo.png")}
+								className="logo"
+								alt="babble logo" />
+						</div>
 					</div>
 
 					<div className="container">
@@ -120,5 +120,9 @@ const Container = styled.div`
     @media screen and (min-width: 720px) and (max-width: 1080px) {
       grid-template-columns: 35% 65%;
     }
+		.contact {
+
+			width: 90%
+		}
   }
 `;

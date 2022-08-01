@@ -25,7 +25,7 @@ export default function Contacts({ contacts, changeChat }) {
   return (
     <>
       <Container>
-        <div className="contacts">
+        <div className="contacts m-2 p-2 justify-content-start">
           {contacts.map((contact, index) => {
             return (
               <div
