@@ -35,7 +35,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 body {
 	background-color: rgb(251, 251, 251);
-	font-family: 'Barlow', sans-serif;
+	font-family: 'Rubik Mono One', sans-serif;
 }
 
 .mid {
@@ -49,6 +49,7 @@ body {
 	-ms-border-radius: 4px;
 	-o-border-radius: 4px;
 	margin: 50px 0px;
+	margin-top: 300px;
 }
 
 .startheader {
@@ -77,6 +78,7 @@ body {
 	-moz-border-radius: 3px;
 	-ms-border-radius: 3px;
 	-o-border-radius: 3px;
+	font-family: monospace;
 }
 
 .startbtns {
