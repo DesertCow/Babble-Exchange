@@ -34,6 +34,7 @@ export default function ChatContainer({ currentChat, socket }) {
   }, [currentChat]);
 
   useEffect(() => {
+
     const getCurrentChat = async () => {
       if (currentChat) {
         await JSON.parse(
@@ -51,23 +52,41 @@ export default function ChatContainer({ currentChat, socket }) {
     setMSGTime(currentTime.toLocaleTimeString());
 
     const data = await JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY));
+
     socket.current.emit("send-msg", {
       recipient: currentChat._id,
       sender: data._id,
       msg,
     });
+
     await axios.post(sendMessageRoute, {
-      sender: data._id,
       recipient: currentChat._id,
+      sender: data._id,
       message: msg,
     });
 
 
-
-    // const msgs = [...messageState];
     // console.log(JSON.stringify(messageState));
-    // msgs.push({ fromSelf: true, message: msg });
-    // setMessages({ ...messageState, messages: msgs });
+    const msgs = [{ ...messageState }];
+    console.log("AFTER MSG: " + JSON.stringify(msgs));
+    msgs.push({ fromSelf: true, message: msg });
+    setMessages({ ...messageState, messages: msgs });
+    console.log("Message State " + JSON.stringify(messageState));
+
+    async function fetchLocalData() {
+
+      const data = await JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY));
+
+      const response = await axios.post(recieveMessageRoute, {
+        sender: currentChat._id,
+        recipient: data._id,
+      });
+
+      setMessages({ ...messageState, messages: response.data });
+
+    }
+    fetchLocalData();
+
   };
 
   useEffect(() => {
@@ -80,7 +99,7 @@ export default function ChatContainer({ currentChat, socket }) {
 
   useEffect(() => {
     arrivalMessage && setMessages((prev) => [...prev, arrivalMessage]);
-  }, [arrivalMessage]);
+  }, [arrivalMessage, messageState]);
 
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -102,7 +121,6 @@ export default function ChatContainer({ currentChat, socket }) {
       <div className="chat-messages">
         {messageState.messages.map((message) => {
           return (
-            // <div ref={scrollRef} key={uuidv4()}>
             <div ref={scrollRef} key={uuidv4()}>
               <div
                 className={`message ${message.fromSelf ? "sended" : "recieved"
@@ -110,7 +128,7 @@ export default function ChatContainer({ currentChat, socket }) {
               >
                 <div className="content ">
                   <p>{message.message}</p>
-                  <h1>Time Stamp: {msgTime}</h1>
+                  <h5>Time Stamp: {msgTime}</h5>
                 </div>
               </div>
             </div>
