@@ -24,7 +24,8 @@
     "mongoose": "^6.4.7",
     "nodemon": "^2.0.19",
     "react-icons": "^4.4.0",
-    "socket.io": "^4.5.1"
+    "socket.io": "^4.5.1",
+    "emoji-picker-react": "^3.6.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"
