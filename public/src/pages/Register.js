@@ -57,6 +57,12 @@ function Register() {
 
 		<div className="row d-flex align-items-center justify-content-center">
 
+			<div className="col-12 text-center ">
+				<img src={require("../img/babble_logo.png")}
+					className="logo"
+					alt="babble logo" />
+			</div>
+
 			<div className="mid col-4">
 
 				<h1 className="text-center startheader">Sign up</h1>

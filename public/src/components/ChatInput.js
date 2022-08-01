@@ -52,7 +52,7 @@ const Container = styled.div`
   display: grid;
   align-items: center;
   grid-template-columns: 5% 95%;
-  background-color: white;
+  background-color: #97a8a8;
   border-top: 1px solid #ededed;
   padding: 0 2rem;
   @media screen and (min-width: 720px) and (max-width: 1080px) {
@@ -67,7 +67,7 @@ const Container = styled.div`
     .emoji {
       position: relative;
       svg {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
         color: #ffff00c8;
         cursor: pointer;
       }
@@ -108,7 +108,7 @@ const Container = styled.div`
 	margin-left: 9px;
     align-items: center;
     gap: 2rem;
-    background-color: #ffffff34;
+    background-color: #ffffff;
     input {
       width: 90%;
       height: 60%;
@@ -131,7 +131,7 @@ const Container = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #6b6b6b;
+      background-color: #657070;
       border: none;
       @media screen and (min-width: 720px) and (max-width: 1080px) {
         padding: 0.3rem 1rem;
@@ -141,7 +141,7 @@ const Container = styled.div`
       }
       svg {
         font-size: 1.3rem;
-        color: #cee3f5;
+        color: #faffff;
       }
 	  
     }

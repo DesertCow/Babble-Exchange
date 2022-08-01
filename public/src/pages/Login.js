@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { loginRoute, registerRoute } from "../utils/apiRoutes";
-
 // React Toastify
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -61,7 +60,7 @@ function Login() {
 			}
 		}
 	};
-
+ 
 
 	const handleSignUp = async (event) => {
 		// navigate("/Register");
@@ -76,10 +75,16 @@ function Login() {
 	return (
 		<div className="row d-flex align-items-center justify-content-center">
 
+			<div className="col-12 text-center ">
+				<img src={require("../img/babble_logo.png")} 
+					className="logo"
+					alt="babble logo" />
+			</div>
+
 			<div className="mid col-4">
 
-				<h1 className="text-center">Welcome to</h1>
-				<h1 className="text-center startheader">Babble Exchange</h1>
+				<h1 className="text-center welcometo">Welcome to</h1>
+				<h1 className="text-center head">Babble Exchange</h1>
 
 				<form className="welcome">
 
