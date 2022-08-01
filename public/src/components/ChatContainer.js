@@ -110,13 +110,13 @@ export default function ChatContainer({ currentChat, socket }) {
       {/* <h1>Selected Chat: {currentChat.username}----[{currentChat._id}]--- {currentChat.email}</h1>
       <h1>Hello World!</h1>
       {JSON.stringify(messageState.messages)} */}
-      <div className="chat-header">
-        <div className="user-details">
-          <div className="username">
-            <h3>{currentChat.username}</h3>
-          </div>
+      <div className="chat-header d-flex justify-content-between">
+        <div className="username">
+          <h3>{currentChat.username}</h3>
         </div>
-        {/* <Logout /> */}
+        <div className="user-details">
+          <Logout />
+        </div>
       </div>
       <div className="chat-messages">
         {messageState.messages.map((message) => {
