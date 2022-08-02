@@ -27,22 +27,33 @@ function Register() {
 
 	const validateSignUp = () => {
 		const { password, confirmPassword, username, email } = values;
+
+		console.log(password + " || " + confirmPassword)
 		if (password !== confirmPassword) {
 			toast.error(
 				"Password and confirm password should be same.",
 				toastOptions
 			);
-		} if (username.length < 3) {
+			return false;
+		}
+
+		if (username.length < 3) {
 			toast.error(
 				"Username should be greater than 3 characters.",
 				toastOptions
 			);
-		} if (password.length < 8) {
+			return false;
+		}
+
+		if (password.length < 8) {
 			toast.error(
 				"Password should be equal or greater than 8 characters.",
 				toastOptions
 			);
-		} if (email === "") {
+			return false;
+		}
+
+		if (email === "") {
 			toast.error("Email is required.", toastOptions);
 			return false;
 		}
@@ -52,9 +63,9 @@ function Register() {
 
 	const handleSignUp = async (event) => {
 		event.preventDefault();
-		// TODO: Add validateForm() method
+
 		if (validateSignUp()) {
-			const { email, username, password, passwordconfirm } = values;
+			const { email, username, password } = values;
 
 			// console.log("User Data: " + email + "||" + username + "||" + password + "||" + passwordconfirm);
 
@@ -73,7 +84,7 @@ function Register() {
 			}
 		}
 	}
-	
+
 	return (
 
 		<div className="row d-flex align-items-center justify-content-center">
@@ -138,8 +149,8 @@ function Register() {
 							<input
 								className="startinputs"
 								type="password"
-								id="passwordconfirm"
-								name="passwordconfirm"
+								id="confirmPassword"
+								name="confirmPassword"
 								placeholder=""
 								onChange={(e) => inputUpdated(e)}
 							/>
