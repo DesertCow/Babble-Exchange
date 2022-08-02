@@ -11,7 +11,7 @@ import { sendMessageRoute, recieveMessageRoute } from "../utils/apiRoutes";
 export default function ChatContainer({ currentChat, socket }) {
 
   const [messageState, setMessages] = useState({ messages: [] });
-  const [msgTime, setMSGTime] = useState(null);
+  const [localUser, setLocalUser] = useState(null);
   const scrollRef = useRef();
   const [arrivalMessage, setArrivalMessage] = useState(null);
 
@@ -28,6 +28,7 @@ export default function ChatContainer({ currentChat, socket }) {
       });
 
       setMessages({ ...messageState, messages: response.data });
+      setLocalUser(data.username);
 
     }
     fetchLocalData();
@@ -49,7 +50,7 @@ export default function ChatContainer({ currentChat, socket }) {
 
 
     let currentTime = new Date();
-    setMSGTime(currentTime.toLocaleTimeString());
+    // setMSGTime(currentTime.toLocaleTimeString());
 
     const data = await JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY));
 
@@ -107,15 +108,17 @@ export default function ChatContainer({ currentChat, socket }) {
 
   return (
     <Container>
-      {/* <h1>Selected Chat: {currentChat.username}----[{currentChat._id}]--- {currentChat.email}</h1>
-      <h1>Hello World!</h1>
-      {JSON.stringify(messageState.messages)} */}
-      <div className="chat-header d-flex justify-content-between">
-        <div className="username">
-          <h3>{currentChat.username}</h3>
+      <div className="chat-header d-flex justify-content-between p-4">
+        <div className="m-2">
+          <h1 className="username text-center m-2 p-2">{currentChat.username}</h1>
         </div>
-        <div className="user-details">
-          <Logout />
+        <div className="d-flex m-3 p-4">
+          <div className="m-2 p-5">
+            <h3 className="loggedInUser text-center m-2 p-2">{localUser}</h3>
+          </div>
+          <div className="user-details">
+            <Logout />
+          </div>
         </div>
       </div>
       <div className="chat-messages">
@@ -147,6 +150,7 @@ const Container = styled.div`
   border-radius: 0px 7px 7px 0px;
   gap: 0.1rem;
   background-color: rgb(255,255,255);
+  border: 10px solid #b8b8b8;
   overflow: hidden;
   @media screen and (min-width: 720px) and (max-width: 1080px) {
     grid-template-rows: 15% 70% 15%;
@@ -156,7 +160,7 @@ const Container = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 0 2rem;
-	border-bottom: .8px solid #b8b8b8;
+	border-bottom: 5px solid #b8b8b8;
     .user-details {
       display: flex;
       align-items: center;
@@ -169,14 +173,41 @@ const Container = styled.div`
       .username {
         h3 {
           color: #474747;
-		  font-size: 22px;
-		  font-weight: 600;
+		      font-size: 500px;
+		      font-weight: 600;
         }
 		
 		
       }
     }
   }
+
+  .username {
+
+    font-size: 40px;
+    color: white;
+    background-color: #D8A15A;
+		border: 1px solid #737373;
+    border-radius: 15px 15px 15px 15px;
+    height: 60px;
+    width: 110%;
+    margin-right: 10%
+    margin-left: 50px;
+    font-size: 30px;
+  }
+  
+  .loggedInUser {
+      opacity: 94%;
+		  color: white;
+      background-color: #5b92d9;
+      border-radius: 15px 15px 15px 15px;
+      height: 60px;
+      width: 110%;
+      margin-right: 10%
+      margin-left: 50px;
+      font-size: 30px;
+    }
+
   .chat-messages {
     padding: 1rem 2rem;
     display: flex;
@@ -213,12 +244,12 @@ const Container = styled.div`
       background-color: #5b92d9;
       }
     }
-    
+
     .sended {
       justify-content: flex-start;
       .content {
-		color: #828282;
-        background-color: white;
+		color: white;
+        background-color: #D8A15A;
 		border: 1px solid #737373;
       }
     }

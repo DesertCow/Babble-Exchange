@@ -80,7 +80,7 @@ function Register() {
 			}
 			if (data.status === true) {
 				toast.success("Account Sign-Up Successful", toastOptions);
-				navigate("/");
+				navigate("/Chat");
 			}
 		}
 	}
