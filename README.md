@@ -116,7 +116,10 @@ npm start
   * dotenv (16.0.1)
     <br>
 * New Packages
-  * socket-io
+  * socket-io (4.5.1)
+  * cors (2.8.5)
+  * react-icons (4.4.0)
+  * react-toastify (9.0.7)
 
 <br>
 <br>
