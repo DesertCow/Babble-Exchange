@@ -10,149 +10,148 @@ import { sendMessageRoute, recieveMessageRoute } from "../utils/apiRoutes";
 
 export default function ChatContainer({ currentChat, socket }) {
 
-  const [messageState, setMessages] = useState({ messages: [] });
-  const [localUser, setLocalUser] = useState(null);
-  const scrollRef = useRef();
-  const [arrivalMessage, setArrivalMessage] = useState(null);
+	const [messageState, setMessages] = useState({ messages: [] });
+	const [localUser, setLocalUser] = useState(null);
+	const scrollRef = useRef();
+	const [arrivalMessage, setArrivalMessage] = useState(null);
 
 
-  useEffect(() => {
+	useEffect(() => {
 
-    async function fetchLocalData() {
+		async function fetchLocalData() {
 
-      await setTimeout(() => console.log(messageState), 3000);
+			await setTimeout(() => console.log(messageState), 3000);
 
-      const data = await JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY));
-      const response = await axios.post(recieveMessageRoute, {
-        sender: currentChat._id,
-        recipient: data._id,
-      });
+			const data = await JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY));
+			const response = await axios.post(recieveMessageRoute, {
+				sender: currentChat._id,
+				recipient: data._id,
+			});
 
-      setMessages({ ...messageState, messages: response.data });
-      setLocalUser(data.username);
+			setMessages({ ...messageState, messages: response.data });
+			setLocalUser(data.username);
 
-    }
-    fetchLocalData();
-  }, [currentChat, arrivalMessage, messageState]);
+		}
+		fetchLocalData();
+	}, [currentChat, arrivalMessage, messageState]);
 
-  useEffect(() => {
+	useEffect(() => {
 
-    const getCurrentChat = async () => {
-      if (currentChat) {
-        await JSON.parse(
-          localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
-        )._id;
-      }
-    };
-    getCurrentChat();
-  }, [currentChat]);
+		const getCurrentChat = async () => {
+			if (currentChat) {
+				await JSON.parse(
+					localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
+				)._id;
+			}
+		};
+		getCurrentChat();
+	}, [currentChat]);
 
-  const handleSendMsg = async (msg) => {
-
-
-    let currentTime = new Date();
-    // setMSGTime(currentTime.toLocaleTimeString());
-
-    const data = await JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY));
-
-    socket.current.emit("send-msg", {
-      recipient: currentChat._id,
-      sender: data._id,
-      msg,
-    });
-
-    await axios.post(sendMessageRoute, {
-      recipient: currentChat._id,
-      sender: data._id,
-      message: msg,
-    });
+	const handleSendMsg = async (msg) => {
 
 
-    // console.log(JSON.stringify(messageState));
-    const msgs = [{ ...messageState }];
-    console.log("AFTER MSG: " + JSON.stringify(msgs));
-    msgs.push({ fromSelf: true, message: msg });
-    setMessages({ ...messageState, messages: msgs });
-    console.log("Message State " + JSON.stringify(messageState));
+		let currentTime = new Date();
+		// setMSGTime(currentTime.toLocaleTimeString());
 
-    async function fetchLocalData() {
+		const data = await JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY));
 
-      const data = await JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY));
+		socket.current.emit("send-msg", {
+			recipient: currentChat._id,
+			sender: data._id,
+			msg,
+		});
 
-      const response = await axios.post(recieveMessageRoute, {
-        sender: currentChat._id,
-        recipient: data._id,
-      });
+		await axios.post(sendMessageRoute, {
+			recipient: currentChat._id,
+			sender: data._id,
+			message: msg,
+		});
 
-      setMessages({ ...messageState, messages: response.data });
 
-    }
-    fetchLocalData();
-    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+		// console.log(JSON.stringify(messageState));
+		const msgs = [{ ...messageState }];
+		console.log("AFTER MSG: " + JSON.stringify(msgs));
+		msgs.push({ fromSelf: true, message: msg });
+		setMessages({ ...messageState, messages: msgs });
+		console.log("Message State " + JSON.stringify(messageState));
 
-  };
+		async function fetchLocalData() {
 
-  useEffect(() => {
-    if (socket.current) {
-      socket.current.on("msg-recieve", (msg) => {
-        setArrivalMessage({ fromSelf: false, message: msg });
-      });
-    }
-  }, []);
+			const data = await JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY));
 
-  useEffect(() => {
-    arrivalMessage && setMessages((prev) => [...prev, arrivalMessage]);
-  }, [arrivalMessage, messageState]);
+			const response = await axios.post(recieveMessageRoute, {
+				sender: currentChat._id,
+				recipient: data._id,
+			});
 
-  useEffect(() => {
-    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messageState, arrivalMessage]);
+			setMessages({ ...messageState, messages: response.data });
 
-  return (
-    <Container>
-      <div className="chat-header d-flex justify-content-between p-4">
-        <div className="m-2">
-          <h1 className="username text-center m-2 p-2">{currentChat.username}</h1>
-        </div>
-        <div className="d-flex m-3 p-4">
-          <div className="m-2 p-5">
-            <h3 className="loggedInUser text-center m-2 p-2">{localUser}</h3>
-          </div>
-          <div className="user-details">
-            <Logout />
-          </div>
-        </div>
-      </div>
-      <div className="chat-messages">
-        {messageState.messages.map((message) => {
-          return (
-            <div ref={scrollRef} key={uuidv4()}>
-              <div
-                className={`message ${message.fromSelf ? "sended" : "recieved"
-                  }`}
-              >
-                <div className="content ">
-                  <p>{message.message}</p>
-                  {/* <h5>Time Stamp: {msgTime}</h5> */}
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-      <ChatInput handleSendMsg={handleSendMsg} />
-    </Container>
-  );
+		}
+		fetchLocalData();
+		scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+
+	};
+
+	useEffect(() => {
+		if (socket.current) {
+			socket.current.on("msg-recieve", (msg) => {
+				setArrivalMessage({ fromSelf: false, message: msg });
+			});
+		}
+	}, []);
+
+	useEffect(() => {
+		arrivalMessage && setMessages((prev) => [...prev, arrivalMessage]);
+	}, [arrivalMessage, messageState]);
+
+	useEffect(() => {
+		scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+	}, [messageState, arrivalMessage]);
+
+	return (
+		<Container>
+			<div className="chat-header d-flex justify-content-between p-4">
+				<div className="m-2">
+					<h1 className="username text-center m-2 p-2">{currentChat.username}</h1>
+				</div>
+				<div className="d-flex m-3 p-4">
+					<div className="m-2 p-5">
+						<h3 className="loggedInUser text-center m-2 p-2">{localUser}</h3>
+					</div>
+					<div className="user-details">
+						<Logout />
+					</div>
+				</div>
+			</div>
+			<div className="chat-messages">
+				{messageState.messages.map((message) => {
+					return (
+						<div ref={scrollRef} key={uuidv4()}>
+							<div
+								className={`message ${message.fromSelf ? "sended" : "recieved"
+									}`}
+							>
+								<div className="content ">
+									<p>{message.message}</p>
+									{/* <h5>Time Stamp: {msgTime}</h5> */}
+								</div>
+							</div>
+						</div>
+					);
+				})}
+			</div>
+			<ChatInput handleSendMsg={handleSendMsg} />
+		</Container>
+	);
 
 }
 
 const Container = styled.div`
   display: grid;
-  grid-template-rows: 9% 77% 14%;
+  grid-template-rows: 12% 74% 14%;
   border-radius: 0px 7px 7px 0px;
   gap: 0.1rem;
   background-color: rgb(255,255,255);
-  border: 10px solid #b8b8b8;
   overflow: hidden;
   @media screen and (min-width: 720px) and (max-width: 1080px) {
     grid-template-rows: 15% 70% 15%;
@@ -162,7 +161,7 @@ const Container = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 0 2rem;
-	border-bottom: 5px solid #b8b8b8;
+	border-bottom: 2px solid #919191;
     .user-details {
       display: flex;
       align-items: center;
@@ -172,49 +171,32 @@ const Container = styled.div`
           height: 3rem;
         }
       }
-      .username {
-        h3 {
-          color: #474747;
-		      font-size: 500px;
-		      font-weight: 600;
-        }
-		
-		
-      }
     }
-  }
-
-  .username {
-
-    font-size: 40px;
-    color: white;
-    background-color: #D8A15A;
-		border: 1px solid #737373;
-    border-radius: 15px 15px 15px 15px;
-    height: 60px;
-    width: 110%;
-    margin-right: 10%
-    margin-left: 50px;
-    font-size: 30px;
   }
   
-  .loggedInUser {
-      opacity: 94%;
-		  color: white;
-      background-color: #5b92d9;
-      border-radius: 15px 15px 15px 15px;
-      height: 60px;
-      width: 110%;
-      margin-right: 10%
-      margin-left: 50px;
-      font-size: 30px;
-    }
 
+.username {
+    font-size: 24px;
+    color: #4a4a4a;
+    border: 3px solid  #f7e4c3;
+	background-color: #f7e4c3;
+    border-radius: 66px;
+}
+
+.loggedInUser {
+	font-size: 24px;
+	color: white;
+	background-color: #5b92d9;
+	border: 1px solid  #5b92d9;
+	border-radius: 66px;
+    }
+	
   .chat-messages {
     padding: 1rem 2rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+	background-color: #f5f7fa;
     overflow: auto;
     &::-webkit-scrollbar {
       width: 0.2rem;
@@ -240,19 +222,19 @@ const Container = styled.div`
       }
     }
     .recieved {
-      justify-content: flex-end;
+      justify-content: flex-start;
       .content {
-		  color: white;
-      background-color: #5b92d9;
+	  color: #4a4a4a;
+      background-color: #f7e4c3;
+	  border: 1px solid #737373;
       }
     }
 
     .sended {
-      justify-content: flex-start;
+      justify-content: flex-end;
       .content {
-		color: white;
-        background-color: #D8A15A;
-		border: 1px solid #737373;
+		color: #ffffff;
+        background-color: #5b92d9;
       }
     }
   }
