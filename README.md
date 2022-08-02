@@ -48,7 +48,7 @@ Instant message applicaiton that allow you to easily stay connected with freinds
  ----
 
 <p align="center">
-  <img src="./client/public/WireFrame_Login.png" width="850" alt="Login Screen Wireframe")
+  <img src="./public/src/img/WireFrame_Login.png" width="850" alt="Login Screen Wireframe")
 </p>
 <h5 align="center">Login Screen</h5>
 <br>
@@ -56,7 +56,7 @@ Instant message applicaiton that allow you to easily stay connected with freinds
 <br>
 
 <p align="center">
-  <img src="./client/public/WireFrame_SignUp.png" width="850" alt="Sign Up Wireframe")
+  <img src="./public/src/img/WireFrame_SignUp.png" width="850" alt="Sign Up Wireframe")
 </p>
 <h5 align="center">Sign Up Page</h5>
 
@@ -65,7 +65,7 @@ Instant message applicaiton that allow you to easily stay connected with freinds
 <br>
 
 <p align="center">
-  <img src="./client/public/WireFrame_Chat.png" width="850" alt="Main Chat Screen Wireframe")
+  <img src="./public/src/img/WireFrame_Chat.png" width="850" alt="Main Chat Screen Wireframe")
 </p>
 <h5 align="center">User Chat Screen</h5>
 
@@ -74,7 +74,7 @@ Instant message applicaiton that allow you to easily stay connected with freinds
 <br>
 
 <p align="center">
-  <img src="./client/public/WireFrame_Settings.png" width="850" alt="Settings Wireframe")
+  <img src="./public/src/img/WireFrame_Settings.png" width="850" alt="Settings Wireframe")
 </p>
 <h5 align="center">Settings Menu</h5>
 
@@ -126,7 +126,7 @@ npm start
   ----
 
  <p align="center">
-  <img src="./public/img/demo1.gif" width="550" alt="Demo 1")
+  <img src="./public/src/img/Babble-Demo1.gif" width="774" height="486" alt="Demo 1")
 </p>
 <h5 align="center">Demo of Babble-Exchange</h5>
 <br>
@@ -137,7 +137,7 @@ npm start
   ----
 
  <p align="center">
-  <a href="./public/img/Babbel_Exchange_Presentation_22.pdf">Presentation PDF</a>
+  <a href="./public/src/img/Babble-Exchange.pdf">Presentation PDF</a>
 </p>
 <br>
 <br>
