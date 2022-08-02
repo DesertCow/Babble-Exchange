@@ -12,7 +12,7 @@ require('dotenv').config();
 app.use(cors({ origin: process.env.CurrentHost }));
 app.use(express.json());
 
-console.log("CORS = " + process.env.MONGO_URL)
+console.log("CORS = " + process.env.CurrentHost)
 
 mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
