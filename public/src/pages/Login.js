@@ -43,12 +43,18 @@ function Login() {
 			return false;
 		} else if (password === "") {
 			toast.error("Password is required.", toastOptions);
-		return true;
+			return false;
+		}
+		else {
+			return true;
 		}
 	};
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
+
+		console.log("Valid? = " + validateForm() + " || " + JSON.stringify(values))
+
 		if (validateForm()) {
 			const { username, password } = values;
 			const { data } = await axios.post(loginRoute, {
@@ -65,11 +71,11 @@ function Login() {
 					JSON.stringify(data.user)
 				);
 				toast.success("Login Was Successful", toastOptions);
-				navigate("/");
+				navigate("/chat");
 			}
 		}
 	};
- 
+
 
 	const handleSignUp = async (event) => {
 		// navigate("/Register");
@@ -85,7 +91,7 @@ function Login() {
 		<div className="row d-flex align-items-center justify-content-center">
 
 			<div className="col-12 text-center ">
-				<img src={require("../img/babble_logo.png")} 
+				<img src={require("../img/babble_logo.png")}
 					className="logo"
 					alt="babble logo" />
 			</div>

@@ -45,16 +45,10 @@ export default function Chat() {
 		async function fetchContactData() {
 
 			// TODO: Fix Temp Workaround, should use currentUser._id for ID..
-			let finalApiRoute = `${allUsersRoute}/62e2dd730d5d64d0c8d9d0de`;
 			let tempID = JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY))._id;
-			// console.log("TempID " + tempID)
-			// console.log(`${allUsersRoute}/${tempID}`)
 			const data = await axios.get(`${allUsersRoute}/${tempID}`);
 			setContacts(data.data);
 			setIsLoading(false);
-
-			// if (currentUser) {
-			//console.log("API Route: " + allUsersRoute + "/" + JSON.stringify(currentUser));
 
 		}
 		fetchContactData();
@@ -73,7 +67,7 @@ export default function Chat() {
 				</Container>
 			) : (
 				<Container>
-					<div className="row">
+					<div className="row headerTitle">
 						<div className="col-12 text-center logodiv">
 							<img src={require("../img/babble_logo.png")}
 								className="logo"
@@ -102,6 +96,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 1rem;
+	
   
   align-items: center;
   background-color: rgb(249, 252, 252);
