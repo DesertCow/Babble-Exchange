@@ -20,8 +20,9 @@ export default function ChatContainer({ currentChat, socket }) {
 
     async function fetchLocalData() {
 
-      const data = await JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY));
+      await setTimeout(() => console.log(messageState), 3000);
 
+      const data = await JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY));
       const response = await axios.post(recieveMessageRoute, {
         sender: currentChat._id,
         recipient: data._id,
@@ -32,7 +33,7 @@ export default function ChatContainer({ currentChat, socket }) {
 
     }
     fetchLocalData();
-  }, [currentChat]);
+  }, [currentChat, arrivalMessage, messageState]);
 
   useEffect(() => {
 
@@ -87,6 +88,7 @@ export default function ChatContainer({ currentChat, socket }) {
 
     }
     fetchLocalData();
+    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
 
   };
 
@@ -104,7 +106,7 @@ export default function ChatContainer({ currentChat, socket }) {
 
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messageState]);
+  }, [messageState, arrivalMessage]);
 
   return (
     <Container>
